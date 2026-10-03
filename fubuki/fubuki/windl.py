@@ -33,7 +33,8 @@ PROFILE_ID = "606624d44113"
 INSTANCE_ID = "560dc9f3-1aa5-4a2f-b63c-9e18f8d0e175"
 TIMEOUT = 30
 
-# The version table, transcribed from Fido's $WindowsVersions. Each Windows
+# The version table, transcribed from Fido's $WindowsVersions (Fido 1.71,
+# 2026-10). Update it when Fido does; Microsoft retires product ids. Each Windows
 # entry is (name, query-name, [releases]); each release is (label,
 # [(edition, [product-edition-ids])]). ARM64 gets a second id, so ids are a
 # list. UEFI Shell entries download straight from a GitHub release.
@@ -41,10 +42,10 @@ WINDOWS_VERSIONS = [
     {
         "name": "Windows 11", "query": "windows11", "kind": "windows",
         "releases": [
-            {"label": "25H2 v2 (Build 26200.8037 - 2026.03)", "editions": [
-                ("Windows 11 Home/Pro/Edu", [3321, 3324]),
-                ("Windows 11 Home China", [3322, 3325]),
-                ("Windows 11 Pro China", [3323, 3326]),
+            {"label": "26H2 (Build 26300.9457 - 2026.09)", "editions": [
+                ("Windows 11 Home/Pro/Edu", [3813, 3816]),
+                ("Windows 11 Home China", [3814, 3817]),
+                ("Windows 11 Pro China", [3815, 3818]),
             ]},
         ],
     },
