@@ -1,14 +1,13 @@
-# Fubuki
+# Stoke
 
 **A bootable USB writer for Linux, in the spirit of Rufus.**
 
-Japanese 桜吹雪, *sakura fubuki*: a blizzard of cherry petals.
 
-Fubuki makes a USB stick that boots, from Windows and Linux installers, live
+Stoke makes a USB stick that boots, from Windows and Linux installers, live
 systems, DOS, and raw disk images. It does the things Rufus does that a plain
 `dd` cannot, and it does them with the tools a Linux system already has.
 
-<p align="center"><img src="docs/screenshots/fubuki-windows-v4.png" alt="Fubuki: the KDE window and the GNOME window"></p>
+<p align="center"><img src="docs/screenshots/stoke-windows.png" alt="Stoke: the KDE window and the GNOME window"></p>
 
 - **Windows install media** on NTFS or exFAT, booting on UEFI through
   UEFI:NTFS, or on FAT32 with `install.wim` split for you.
@@ -23,33 +22,31 @@ systems, DOS, and raw disk images. It does the things Rufus does that a plain
 - **FreeDOS**, KolibriOS, Grub4DOS, and plain UEFI:NTFS drives.
 - Compressed images (gzip, xz, bzip2, zstd), fixed VHD, checksums, a
   destructive bad-blocks scan.
-- A KDE window (`fubuki-qt`) and a GNOME window (`fubuki-gtk`) over one
-  engine with a command line (`fubuki`). Twelve languages.
+- A KDE window (`stoke-qt`) and a GNOME window (`stoke-gtk`) over one
+  engine with a command line (`stoke`). Twelve languages.
 
 ## Install
 
 Arch Linux and derivatives, from the AUR:
 
-    yay -S fubuki fubuki-qt      # KDE (was fubuki-ui)
-    yay -S fubuki fubuki-gtk     # GNOME
+    yay -S stoke stoke-qt      # KDE (was fubuki-qt)
+    yay -S stoke stoke-gtk     # GNOME
 
-Or from this tree: `makepkg -si` in `fubuki/`, then in `fubuki-qt/` or
-`fubuki-gtk/`. `./release.sh` builds all packages into `dist/`.
+Or from this tree: `makepkg -si` in `stoke/`, then in `stoke-qt/` or
+`stoke-gtk/`. `./release.sh` builds all packages into `dist/`.
 
 Any distribution, no root, either window:
 
-- **Flatpak**: `io.github.dresden196.fubuki` is the KDE window on the KDE
-  runtime, `io.github.dresden196.fubuki.gtk` the GNOME window on the GNOME
+- **Flatpak**: `io.github.dresden196.stoke` is the KDE window on the KDE
+  runtime, `io.github.dresden196.stoke.gtk` the GNOME window on the GNOME
   runtime; both manifests are in `packaging/flatpak/` and every tool the
   engine needs is built into them. Bundles are attached to each release.
-- **AppImage**: `Fubuki-qt-*.AppImage` and `Fubuki-gtk-*.AppImage` from a
+- **AppImage**: `Stoke-qt-*.AppImage` and `Stoke-gtk-*.AppImage` from a
   release (`packaging/appimage/build.sh` builds them on Arch); make one
   executable and run it.
 
 Both reach the drive through udisks2, so there is no `pkexec`: the desktop's
 own polkit prompt appears once when the drive is opened.
-
-Fubuki ships with [SakuraOS](https://sakuraos.org).
 
 ## Use
 
@@ -60,17 +57,17 @@ session through polkit.
 
 The engine works on its own:
 
-    fubuki devices
-    fubuki probe some.iso
-    sudo fubuki write -d /dev/sdb -i some.iso
-    sudo fubuki write -d /dev/sdb -i win11.iso --scheme gpt --target uefi --fs ntfs \
+    stoke devices
+    stoke probe some.iso
+    sudo stoke write -d /dev/sdb -i some.iso
+    sudo stoke write -d /dev/sdb -i win11.iso --scheme gpt --target uefi --fs ntfs \
          --windows-option bypass_requirements --windows-option no_online_account
-    sudo fubuki write -d /dev/sdb -i ubuntu.iso --persistence 4G
-    sudo fubuki write -d /dev/sdb -i win11.iso --wintogo 1 --scheme gpt --target uefi --fs ntfs
-    sudo fubuki write -d /dev/sdb -i image.img.xz --mode dd --verify
-    sudo fubuki write -d /dev/sdb --boot-type freedos
+    sudo stoke write -d /dev/sdb -i ubuntu.iso --persistence 4G
+    sudo stoke write -d /dev/sdb -i win11.iso --wintogo 1 --scheme gpt --target uefi --fs ntfs
+    sudo stoke write -d /dev/sdb -i image.img.xz --mode dd --verify
+    sudo stoke write -d /dev/sdb --boot-type freedos
 
-`fubuki write --help` lists everything; `fubuki/PROTOCOL.md` documents the
+`stoke write --help` lists everything; `stoke/PROTOCOL.md` documents the
 JSON protocol the windows use.
 
 ## How it works
@@ -88,8 +85,8 @@ Windows registry and BCD stores through `hivex`.
 The drive itself is reached one of two ways: as root through the device
 nodes (the packaged engine, under `pkexec`), or through udisks2 over D-Bus
 with no root at all, which is what the Flatpak and the AppImage use. Every
-other step is the same code either way. See `fubuki/README.md` for the
-module map and `fubuki/PROTOCOL.md` for the engine protocol.
+other step is the same code either way. See `stoke/README.md` for the
+module map and `stoke/PROTOCOL.md` for the engine protocol.
 
 ## Testing
 
@@ -105,11 +102,11 @@ release, edition and language choice and the Microsoft session flow are a
 Python port of [Fido](https://github.com/pbatard/Fido) (Pete Batard, GPLv3),
 the script Rufus itself runs. From the command line:
 
-    fubuki download --win "Windows 11" --lang "English (United States)" --arch x64 -o Win11.iso
+    stoke download --win "Windows 11" --lang "English (United States)" --arch x64 -o Win11.iso
 
 ## Credits and license
 
 Design and boot payloads derive from [Rufus](https://github.com/pbatard/rufus)
 by Pete Batard: `uefi-ntfs.img`, FreeDOS, the Windows 11 setup wrapper, and
 the boot-sector code ported from ms-sys (Henrik Carlqvist). Grub4DOS by
-chenall. Fubuki is GPL-3.0-or-later.
+chenall. Stoke is GPL-3.0-or-later.

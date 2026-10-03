@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Drive fubuki through its paces inside the test VM, then boot what it
+# Drive stoke through its paces inside the test VM, then boot what it
 # made. Each scenario writes the emulated stick, then the stick image is
 # booted on the host under BIOS and/or UEFI and a screenshot is taken.
 #
@@ -7,27 +7,27 @@
 #   tests/usb/run.sh windows-uefi       one scenario
 #
 # Needs tests/usb/vm.sh running and tests/usb/guest-setup.sh done. The images
-# are named relative to FUBUKI_ISOS (default ~/Downloads): WIN_ISO (a Windows
+# are named relative to STOKE_ISOS (default ~/Downloads): WIN_ISO (a Windows
 # 10/11 ISO), UBUNTU_ISO; the live ISO the guest booted from is used for the
 # live-iso scenario.
 set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-export FUBUKI_VM="${FUBUKI_VM:-usb}"
+export STOKE_VM="${STOKE_VM:-usb}"
 RUN="$HERE/guest-run.sh"
 OUT="$HERE/out"
-ISOS_DIR="${FUBUKI_ISOS:-$HOME/Downloads}"
+ISOS_DIR="${STOKE_ISOS:-$HOME/Downloads}"
 WIN_ISO="${WIN_ISO:-$(ls "$ISOS_DIR"/*[Ww]in*.iso "$ISOS_DIR"/X2*-*.iso 2>/dev/null | head -1 | xargs -r basename)}"
 UBUNTU_ISO="${UBUNTU_ISO:-$(ls "$ISOS_DIR"/ubuntu-*.iso 2>/dev/null | head -1 | xargs -r basename)}"
-LIVE_ISO="$(basename "${FUBUKI_LIVE_ISO:?set FUBUKI_LIVE_ISO}")"
+LIVE_ISO="$(basename "${STOKE_LIVE_ISO:?set STOKE_LIVE_ISO}")"
 PASS=0; FAIL=0
 
 engine() {
     # $1 = extra args for `write`; runs as root in the guest, JSON progress
     # reduced to the log lines and the final result.
-    FUBUKI_GUEST_TIMEOUT=3600 "$RUN" "
-        cd /mnt/fubuki/fubuki &&
-        PYTHONDONTWRITEBYTECODE=1 FUBUKI_PAYLOAD=/mnt/fubuki/fubuki/payload TMPDIR=/var/tmp/fubuki \
-        python3 -m fubuki --json write --yes --temp-dir /var/tmp/fubuki $1 2>&1 |
+    STOKE_GUEST_TIMEOUT=3600 "$RUN" "
+        cd /mnt/stoke/stoke &&
+        PYTHONDONTWRITEBYTECODE=1 STOKE_PAYLOAD=/mnt/stoke/stoke/payload TMPDIR=/var/tmp/stoke \
+        python3 -m stoke --json write --yes --temp-dir /var/tmp/stoke $1 2>&1 |
         python3 -c 'import sys,json
 for l in sys.stdin:
     try: e=json.loads(l)
@@ -40,7 +40,7 @@ for l in sys.stdin:
 }
 
 stick_dev() {
-    "$RUN" 'lsblk -dno NAME,SERIAL | awk "\$2==\"FUBUKITEST01\"{print \"/dev/\"\$1}"' | tr -d '[:space:]'
+    "$RUN" 'lsblk -dno NAME,SERIAL | awk "\$2==\"STOKETEST01\"{print \"/dev/\"\$1}"' | tr -d '[:space:]'
 }
 
 check() {  # name, condition-result(0/1)
@@ -78,7 +78,7 @@ run_scn() { [[ "$want" == all || "$want" == "$1" ]]; }
 
 if run_scn ubuntu-iso; then
     scenario ubuntu-iso --image "/mnt/isos/$UBUNTU_ISO" --mode iso --scheme mbr --target dual --fs fat32 --persistence 2G --extended-label && {
-        "$RUN" 'mkdir -p /mnt/t && mount /dev/disk/by-id/usb-*FUBUKITEST01*-part1 /mnt/t 2>/dev/null && ls /mnt/t | head -20 && cat /mnt/t/boot/grub/grub.cfg | head -20; ls /mnt/t/boot/grub/i386-pc | head -3; umount /mnt/t' || true
+        "$RUN" 'mkdir -p /mnt/t && mount /dev/disk/by-id/usb-*STOKETEST01*-part1 /mnt/t 2>/dev/null && ls /mnt/t | head -20 && cat /mnt/t/boot/grub/grub.cfg | head -20; ls /mnt/t/boot/grub/i386-pc | head -3; umount /mnt/t' || true
         boot_check ubuntu-iso bios 45
         boot_check ubuntu-iso uefi 60
     }
@@ -96,14 +96,14 @@ if run_scn windows-uefi; then
     scenario windows-uefi --image "/mnt/isos/$WIN_ISO" --mode iso --scheme gpt --target uefi --fs ntfs \
         --windows-option bypass_requirements --windows-option no_online_account --windows-option set_user --username tester \
         --windows-option no_data_collection --windows-option disable_bitlocker --windows-option duplicate_locale && {
-        "$RUN" 'mkdir -p /mnt/t && mount -t ntfs3 /dev/disk/by-id/usb-*FUBUKITEST01*-part1 /mnt/t 2>/dev/null || ntfs-3g /dev/disk/by-id/usb-*FUBUKITEST01*-part1 /mnt/t; ls /mnt/t; ls -la /mnt/t/sources/appraiserres* /mnt/t/setup.* /mnt/t/sources/\$OEM\$/\$\$/Panther/ 2>&1; wimdir /mnt/t/sources/boot.wim 2 | grep -i "^/autounattend"; umount /mnt/t' || true
+        "$RUN" 'mkdir -p /mnt/t && mount -t ntfs3 /dev/disk/by-id/usb-*STOKETEST01*-part1 /mnt/t 2>/dev/null || ntfs-3g /dev/disk/by-id/usb-*STOKETEST01*-part1 /mnt/t; ls /mnt/t; ls -la /mnt/t/sources/appraiserres* /mnt/t/setup.* /mnt/t/sources/\$OEM\$/\$\$/Panther/ 2>&1; wimdir /mnt/t/sources/boot.wim 2 | grep -i "^/autounattend"; umount /mnt/t' || true
         boot_check windows-uefi uefi 120
     }
 fi
 if run_scn windows-fat32; then
     scenario windows-fat32 --image "/mnt/isos/$WIN_ISO" --mode iso --scheme mbr --target dual --fs fat32 \
         --windows-option bypass_requirements --windows-option no_online_account && {
-        "$RUN" 'mkdir -p /mnt/t && mount /dev/disk/by-id/usb-*FUBUKITEST01*-part1 /mnt/t; ls -la /mnt/t/sources/install*.swm /mnt/t/sources/install.wim 2>&1; umount /mnt/t' || true
+        "$RUN" 'mkdir -p /mnt/t && mount /dev/disk/by-id/usb-*STOKETEST01*-part1 /mnt/t; ls -la /mnt/t/sources/install*.swm /mnt/t/sources/install.wim 2>&1; umount /mnt/t' || true
         boot_check windows-fat32 bios 90
         boot_check windows-fat32 uefi 120
     }

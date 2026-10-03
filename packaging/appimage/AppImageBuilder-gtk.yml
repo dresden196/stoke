@@ -1,33 +1,33 @@
-# Fubuki as an AppImage: the GNOME window, the engine, Python, GTK 4 and
+# Stoke as an AppImage: the GNOME window, the engine, Python, GTK 4 and
 # every tool the engine shells out to, taken from Arch packages and bundled
 # whole (glibc included), so it runs on any x86_64 Linux with a kernel
 # from this decade. No root: with $APPIMAGE set the engine reaches drives
-# through udisks2 (see fubuki/fubuki/backend.py), which every desktop has.
+# through udisks2 (see stoke/stoke/backend.py), which every desktop has.
 #
-#   packaging/appimage/build.sh gtk      -> dist/Fubuki-gtk-<version>-x86_64.AppImage
+#   packaging/appimage/build.sh gtk      -> dist/Stoke-gtk-<version>-x86_64.AppImage
 version: 1
 
 script:
   - rm -rf AppDir
-  - install -d AppDir/usr/bin AppDir/usr/lib/fubuki AppDir/usr/lib/fubuki-gtk AppDir/usr/share/fubuki
-  - cp -r ../../fubuki/fubuki AppDir/usr/lib/fubuki/
-  - cp -r ../../fubuki/payload/. AppDir/usr/share/fubuki/
-  - install -m755 ../../fubuki/bin/fubuki AppDir/usr/bin/fubuki
-  - cp -r ../../fubuki-gtk/fubuki_gtk AppDir/usr/lib/fubuki-gtk/
-  - install -m755 ../../fubuki-gtk/bin/fubuki-gtk AppDir/usr/bin/fubuki-gtk
-  - for po in ../../fubuki/po/*/fubuki.po; do lang=$(basename $(dirname $po)); install -d AppDir/usr/share/locale/$lang/LC_MESSAGES; msgfmt -o AppDir/usr/share/locale/$lang/LC_MESSAGES/fubuki.mo $po; done
-  - install -Dm644 ../../fubuki/icons/fubuki.svg AppDir/usr/share/icons/hicolor/scalable/apps/fubuki.svg
-  - install -Dm644 ../../fubuki-gtk/io.github.dresden196.fubuki.gtk.desktop AppDir/usr/share/applications/io.github.dresden196.fubuki.gtk.desktop
+  - install -d AppDir/usr/bin AppDir/usr/lib/stoke AppDir/usr/lib/stoke-gtk AppDir/usr/share/stoke
+  - cp -r ../../stoke/stoke AppDir/usr/lib/stoke/
+  - cp -r ../../stoke/payload/. AppDir/usr/share/stoke/
+  - install -m755 ../../stoke/bin/stoke AppDir/usr/bin/stoke
+  - cp -r ../../stoke-gtk/stoke_gtk AppDir/usr/lib/stoke-gtk/
+  - install -m755 ../../stoke-gtk/bin/stoke-gtk AppDir/usr/bin/stoke-gtk
+  - for po in ../../stoke/po/*/stoke.po; do lang=$(basename $(dirname $po)); install -d AppDir/usr/share/locale/$lang/LC_MESSAGES; msgfmt -o AppDir/usr/share/locale/$lang/LC_MESSAGES/stoke.mo $po; done
+  - install -Dm644 ../../stoke/icons/stoke.svg AppDir/usr/share/icons/hicolor/scalable/apps/stoke.svg
+  - install -Dm644 ../../stoke-gtk/io.github.dresden196.stoke.gtk.desktop AppDir/usr/share/applications/io.github.dresden196.stoke.gtk.desktop
 
 AppDir:
   path: ./AppDir
   app_info:
-    id: io.github.dresden196.fubuki.gtk
-    name: Fubuki-gtk
-    icon: fubuki
-    version: !ENV ${FUBUKI_VERSION}
+    id: io.github.dresden196.stoke.gtk
+    name: Stoke-gtk
+    icon: stoke
+    version: !ENV ${STOKE_VERSION}
     exec: usr/bin/python3
-    exec_args: "$APPDIR/usr/bin/fubuki-gtk $@"
+    exec_args: "$APPDIR/usr/bin/stoke-gtk $@"
 
   pacman:
     Architecture: x86_64
@@ -86,14 +86,14 @@ AppDir:
       GDK_PIXBUF_MODULEDIR: '${APPDIR}/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders'
       GSETTINGS_SCHEMA_DIR: '${APPDIR}/usr/share/glib-2.0/schemas'
       XDG_DATA_DIRS: '${APPDIR}/usr/share:/usr/local/share:/usr/share'
-      FUBUKI_ENGINE: '${APPDIR}/usr/bin/fubuki'
-      FUBUKI_LIB: '${APPDIR}/usr/lib/fubuki'
-      FUBUKI_GTK_LIB: '${APPDIR}/usr/lib/fubuki-gtk'
-      FUBUKI_PAYLOAD: '${APPDIR}/usr/share/fubuki'
-      FUBUKI_SYSLINUX: '${APPDIR}/usr/share/fubuki/syslinux'
-      FUBUKI_GRUB_DIR: '${APPDIR}/usr/lib/grub/i386-pc'
-      FUBUKI_LOCALE_DIR: '${APPDIR}/usr/share/locale'
-      FUBUKI_GTK_LOCALE_DIR: '${APPDIR}/usr/share/locale'
+      STOKE_ENGINE: '${APPDIR}/usr/bin/stoke'
+      STOKE_LIB: '${APPDIR}/usr/lib/stoke'
+      STOKE_GTK_LIB: '${APPDIR}/usr/lib/stoke-gtk'
+      STOKE_PAYLOAD: '${APPDIR}/usr/share/stoke'
+      STOKE_SYSLINUX: '${APPDIR}/usr/share/stoke/syslinux'
+      STOKE_GRUB_DIR: '${APPDIR}/usr/lib/grub/i386-pc'
+      STOKE_LOCALE_DIR: '${APPDIR}/usr/share/locale'
+      STOKE_GTK_LOCALE_DIR: '${APPDIR}/usr/share/locale'
 
   test:
     fedora:

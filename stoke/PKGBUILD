@@ -1,0 +1,58 @@
+# Maintainer: Dresden Wildey <dresden196@gmail.com>
+#
+# The engine. Everything that touches a disk is here; the window (stoke-qt)
+# only draws what this reports and hands it a job.
+#
+# The design and the boot payloads come from Rufus (GPLv3, Pete Batard):
+# uefi-ntfs.img, FreeDOS, the Windows 11 24H2 setup wrapper, and the boot
+# sector code ported from ms-sys. See stoke/bootcode.py and payload/.
+pkgname=stoke
+# fubuki was this package's name up to 0.2.3.
+provides=('fubuki')
+conflicts=('fubuki')
+replaces=('fubuki')
+pkgver=0.3.0
+pkgrel=1
+pkgdesc="Stoke bootable USB writer: the engine and command line"
+arch=('any')
+url="https://github.com/dresden196/stoke"
+license=('GPL-3.0-or-later')
+depends=('python' 'python-pyudev' 'util-linux' 'dosfstools' 'ntfs-3g' 'exfatprogs' 'e2fsprogs'
+         # BIOS boot of Linux images: Syslinux is carried in the payload and
+         # written by the engine; GRUB's core.img is built with grub-mkimage.
+         'grub'
+         # Windows: split install.wim for FAT32, patch boot.wim, apply Windows To Go.
+         'wimlib'
+         # Editing the offline registry (the TPM/Secure Boot bypass keys, BCD stores).
+         'hivex'
+         'polkit')
+makedepends=('gettext')
+optdepends=('zstd: writing .zst compressed images'
+            'python-gobject: the udisks2 backend (writing without root, used by the Flatpak and AppImage)')
+source=('io.github.dresden196.stoke.policy')
+sha256sums=('SKIP')
+
+package() {
+    install -Dm755 "$startdir/bin/stoke" "$pkgdir/usr/bin/stoke"
+    ln -s stoke "$pkgdir/usr/bin/fubuki"
+    install -d "$pkgdir/usr/lib/stoke/stoke"
+    install -Dm644 "$startdir"/stoke/*.py -t "$pkgdir/usr/lib/stoke/stoke/"
+    install -d "$pkgdir/usr/share/stoke"
+    cp -r "$startdir/payload/." "$pkgdir/usr/share/stoke/"
+    find "$pkgdir/usr/share/stoke" -type f -exec chmod 644 {} +
+    install -Dm644 "$srcdir/io.github.dresden196.stoke.policy" \
+        "$pkgdir/usr/share/polkit-1/actions/io.github.dresden196.stoke.policy"
+    # The app mark lives here rather than with either window: both front-ends
+    # (stoke-qt, stoke-gtk) depend on this package, and two packages owning
+    # the same hicolor path would conflict.
+    install -Dm644 "$startdir/icons/stoke.svg" \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/stoke.svg"
+    install -Dm644 "$startdir/PROTOCOL.md" "$pkgdir/usr/share/doc/stoke/PROTOCOL.md"
+
+    # Status phrases and error messages (stoke/i18n.py); the log stays English.
+    for po in "$startdir"/po/*/stoke.po; do
+        lang=$(basename "$(dirname "$po")")
+        install -d "$pkgdir/usr/share/locale/$lang/LC_MESSAGES"
+        msgfmt -o "$pkgdir/usr/share/locale/$lang/LC_MESSAGES/stoke.mo" "$po"
+    done
+}

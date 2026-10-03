@@ -27,7 +27,7 @@ else
     stick_args=(-drive "file=$STICK,if=none,id=stick,format=raw,file.locking=off"
                 -device usb-storage,bus=xhci.0,drive=stick,removable=on,bootindex=0)
 fi
-qemu-system-x86_64 -enable-kvm -machine q35 -cpu host -smp 4 -m "${FUBUKI_BOOT_MEM:-4G}" \
+qemu-system-x86_64 -enable-kvm -machine q35 -cpu host -smp 4 -m "${STOKE_BOOT_MEM:-4G}" \
     -drive if=pflash,format=raw,unit=0,readonly=on,file="$OVMF/OVMF_CODE.4m.fd" \
     -drive if=pflash,format=raw,unit=1,file="$VARS" \
     -drive file="$DISK",if=none,id=hd0,format=qcow2 -device ide-hd,drive=hd0,bootindex=1 \

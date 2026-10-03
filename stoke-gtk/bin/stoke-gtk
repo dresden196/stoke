@@ -1,0 +1,9 @@
+#!/usr/bin/python3
+"""Launcher: the window's package lives in /usr/lib/stoke-gtk."""
+import os
+import sys
+
+lib = os.environ.get("STOKE_GTK_LIB", "/usr/lib/stoke-gtk")
+sys.path.insert(0, lib)
+from stoke_gtk.main import main  # noqa: E402
+sys.exit(main())

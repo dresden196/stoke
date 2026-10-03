@@ -1,31 +1,31 @@
 #!/usr/bin/env bash
 # Cancel and error paths: a write cancelled mid-copy, and a write that fails
 # for lack of temporary space, must both leave nothing behind: no mounts
-# under /run/fubuki, no udev inhibit rule, the loop device free.
+# under /run/stoke, no udev inhibit rule, the loop device free.
 #
 #   sudo tests/usb/test-cancel.sh ~/Downloads/ubuntu.iso ~/Downloads/win11.iso
 set -uo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"; ROOT="$(cd "$HERE/../.." && pwd)"; OUT="$HERE/out"
 LINUX_ISO="${1:?linux iso}"; WIN_ISO="${2:?windows iso}"
 [[ $(id -u) == 0 ]] || { echo "run as root" >&2; exit 1; }
-export FUBUKI_LIB="$ROOT/fubuki" FUBUKI_PAYLOAD="$ROOT/fubuki/payload" PYTHONDONTWRITEBYTECODE=1 PYTHONPATH="$ROOT/fubuki"
+export STOKE_LIB="$ROOT/stoke" STOKE_PAYLOAD="$ROOT/stoke/payload" PYTHONDONTWRITEBYTECODE=1 PYTHONPATH="$ROOT/stoke"
 PASS=0; FAIL=0
 check() { if [[ "$2" == 0 ]]; then echo "  PASS  $1"; PASS=$((PASS+1)); else echo "  FAIL  $1"; FAIL=$((FAIL+1)); fi; }
 clean_state() {  # 0 when nothing is left behind for $1 (loop name)
     local n="$1" rc=0
-    grep -q "/run/fubuki/$n" /proc/self/mountinfo && { echo "    leftover mount under /run/fubuki/$n"; rc=1; }
-    ls /run/udev/rules.d/89-fubuki-"$n"* >/dev/null 2>&1 && { echo "    leftover udev rule"; rc=1; }
-    ls -d /run/fubuki/"$n"-* >/dev/null 2>&1 && { echo "    leftover mount dir"; rc=1; }
+    grep -q "/run/stoke/$n" /proc/self/mountinfo && { echo "    leftover mount under /run/stoke/$n"; rc=1; }
+    ls /run/udev/rules.d/89-stoke-"$n"* >/dev/null 2>&1 && { echo "    leftover udev rule"; rc=1; }
+    ls -d /run/stoke/"$n"-* >/dev/null 2>&1 && { echo "    leftover mount dir"; rc=1; }
     return $rc
 }
 mkdir -p "$OUT"
 IMG="$OUT/native-cancel.img"; rm -f "$IMG"; truncate -s 8G "$IMG"
 LOOP=$(losetup -f --show -P "$IMG"); LN=$(basename "$LOOP")
-trap 'losetup -d "$LOOP" 2>/dev/null; umount /mnt/fubuki-tiny 2>/dev/null; rmdir /mnt/fubuki-tiny 2>/dev/null' EXIT
+trap 'losetup -d "$LOOP" 2>/dev/null; umount /mnt/stoke-tiny 2>/dev/null; rmdir /mnt/stoke-tiny 2>/dev/null' EXIT
 
 echo "== cancel during copy"
 # Drive the serve protocol: send the write, wait for copy progress, cancel.
-RESULT=$(python3 - "$LOOP" "$LINUX_ISO" "$ROOT/fubuki/bin/fubuki" <<'PY'
+RESULT=$(python3 - "$LOOP" "$LINUX_ISO" "$ROOT/stoke/bin/stoke" <<'PY'
 import json, subprocess, sys, time
 loop, iso, engine = sys.argv[1:4]
 p = subprocess.Popen([engine, "serve"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True, bufsize=1)
@@ -52,18 +52,18 @@ echo "$RESULT" | grep -q '"cancelled": true' ; check "engine reported the job as
 sleep 1; clean_state "$LN"; check "nothing left behind after cancel" $?
 
 echo "== not enough temporary space (install.wim split on FAT32)"
-mkdir -p /mnt/fubuki-tiny && mount -t tmpfs -o size=64M tmpfs /mnt/fubuki-tiny
-OUTPUT=$(python3 -m fubuki --json write --yes --allow-loop --device "$LOOP" --image "$WIN_ISO" --mode iso --scheme mbr --target dual --fs fat32 --temp-dir /mnt/fubuki-tiny 2>&1 | tail -1)
+mkdir -p /mnt/stoke-tiny && mount -t tmpfs -o size=64M tmpfs /mnt/stoke-tiny
+OUTPUT=$(python3 -m stoke --json write --yes --allow-loop --device "$LOOP" --image "$WIN_ISO" --mode iso --scheme mbr --target dual --fs fat32 --temp-dir /mnt/stoke-tiny 2>&1 | tail -1)
 echo "  ${OUTPUT:0:200}"
 echo "$OUTPUT" | grep -q '"ok": false' && echo "$OUTPUT" | grep -qi "temporary space" ; check "engine failed with the temporary-space error" $?
 sleep 1; clean_state "$LN"; check "nothing left behind after the error" $?
-umount /mnt/fubuki-tiny
+umount /mnt/stoke-tiny
 
 echo "== refuses an internal disk and an unknown device"
 # The engine exits 1 on refusal, so capture first: under pipefail a grep on
 # the pipeline would report the engine's status, not the match.
 SYSDISK=$(lsblk -no PKNAME "$(findmnt -no SOURCE /)" 2>/dev/null | head -1)
-MSG=$(python3 -m fubuki --json write --yes --device "/dev/${SYSDISK:-nvme0n1}" --boot-type none 2>&1); grep -q "running system" <<<"$MSG"; check "system disk refused" $?
-MSG=$(python3 -m fubuki --json write --yes --device /dev/sdzz --boot-type none 2>&1); grep -q "not a disk" <<<"$MSG"; check "unknown device refused" $?
+MSG=$(python3 -m stoke --json write --yes --device "/dev/${SYSDISK:-nvme0n1}" --boot-type none 2>&1); grep -q "running system" <<<"$MSG"; check "system disk refused" $?
+MSG=$(python3 -m stoke --json write --yes --device /dev/sdzz --boot-type none 2>&1); grep -q "not a disk" <<<"$MSG"; check "unknown device refused" $?
 
 echo; echo "passed: $PASS  failed: $FAIL"; [[ $FAIL == 0 ]]

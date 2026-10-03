@@ -1,0 +1,400 @@
+# Stoke engine translation template.
+# Copyright (C) 2026 Dresden Wildey
+# This file is distributed under the same license as the stoke package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: stoke 0.1.0\n"
+"Report-Msgid-Bugs-To: dresden196@gmail.com\n"
+"POT-Creation-Date: 2026-09-08 15:34-0400\n"
+"PO-Revision-Date: 2026-09-08 15:34-0400\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: stoke/bootrec.py:50
+#, python-format
+msgid "unknown MBR type %s"
+msgstr "onbekend MBR-type %s"
+
+#: stoke/bootrec.py:119
+msgid ""
+"not enough space before the first partition for the boot loader (uncheck "
+"'Add fixes for old BIOSes')"
+msgstr "onvoldoende ruimte vóór de eerste partitie voor de bootloader (schakel 'Correcties voor oude BIOS'en toevoegen' uit)"
+
+#: stoke/bootrec.py:152
+msgid "new volume does not have an NTFS boot sector"
+msgstr "nieuw volume heeft geen NTFS-opstartsector"
+
+#: stoke/bootrec.py:160
+msgid "new volume does not have a FAT32 boot sector"
+msgstr "nieuw volume heeft geen FAT32-opstartsector"
+
+#: stoke/bootrec.py:192
+msgid "new volume does not have a FAT16 boot sector"
+msgstr "nieuw volume heeft geen FAT16-opstartsector"
+
+#: stoke/bootrec.py:203
+#, python-format
+msgid "no boot record support for %s"
+msgstr "geen ondersteuning voor opstartrecord voor %s"
+
+#: stoke/cli.py:17
+msgid "Writing a drive needs root: run through pkexec or sudo"
+msgstr "Het schrijven van een schijf vereist root: voer uit via pkexec of sudo"
+
+#: stoke/cli.py:116 stoke/job.py:145
+#, python-format
+msgid "%s is not a disk"
+msgstr "%s is geen schijf"
+
+#: stoke/extract.py:180
+#, python-format
+msgid "'%s' is %s: FAT32 cannot hold files over 4 GB. Use NTFS or exFAT."
+msgstr "'%s' is %s: FAT32 kan geen bestanden groter dan 4 GB bevatten. Gebruik NTFS of exFAT."
+
+#: stoke/extract.py:185
+#, python-format
+msgid "could not write %s: %s"
+msgstr "kon %s niet schrijven: %s"
+
+#: stoke/extract.py:203
+#, python-format
+msgid ""
+"splitting %s needs %s of temporary space in %s, only %s free. Use NTFS "
+"instead of FAT32, or set TMPDIR to a larger location."
+msgstr "het splitsen van %s vereist %s tijdelijke ruimte in %s, slechts %s vrij. Gebruik NTFS in plaats van FAT32, of stel TMPDIR in op een locatie met meer ruimte."
+
+#: stoke/extract.py:213
+msgid "Splitting install.wim for FAT32..."
+msgstr "install.wim wordt gesplitst voor FAT32..."
+
+#: stoke/fs.py:110 stoke/job.py:124 stoke/layout.py:163
+#, python-format
+msgid "unsupported file system %s"
+msgstr "niet-ondersteund bestandssysteem %s"
+
+#: stoke/image.py:69
+#, python-format
+msgid "%s is not a file"
+msgstr "%s is geen bestand"
+
+#: stoke/job.py:96
+#, python-format
+msgid "unknown boot type %s"
+msgstr "onbekend opstarttype %s"
+
+#: stoke/job.py:120
+msgid "scheme must be mbr or gpt"
+msgstr "schema moet mbr of gpt zijn"
+
+#: stoke/job.py:122
+msgid "target must be bios, uefi or dual"
+msgstr "doel moet bios, uefi of dual zijn"
+
+#: stoke/job.py:126
+msgid "no image given"
+msgstr "geen image opgegeven"
+
+#: stoke/job.py:128
+msgid "no device given"
+msgstr "geen apparaat opgegeven"
+
+#: stoke/job.py:130
+msgid "GPT needs a UEFI target"
+msgstr "GPT vereist een UEFI-doel"
+
+#: stoke/job.py:132
+msgid "UEFI:NTFS needs an NTFS or exFAT main partition"
+msgstr "UEFI:NTFS vereist een hoofdpartitie met NTFS of exFAT"
+
+#: stoke/job.py:144
+#, python-format
+msgid "%s holds the running system; refusing to write it"
+msgstr "%s bevat het actieve systeem; schrijven geweigerd"
+
+#: stoke/job.py:147
+#, python-format
+msgid "%s is an internal drive; refusing to write it"
+msgstr "%s is een intern station; schrijven geweigerd"
+
+#: stoke/job.py:149
+#, python-format
+msgid "%s is a loop device; refusing to write it"
+msgstr "%s is een loop-apparaat; schrijven geweigerd"
+
+#: stoke/job.py:158
+msgid "Scanning image..."
+msgstr "Image wordt gescand..."
+
+#: stoke/job.py:162
+msgid "this ISO is not a hybrid image and cannot be written in DD mode"
+msgstr "deze ISO is geen hybride image en kan niet in DD-modus worden geschreven"
+
+#: stoke/job.py:166
+msgid "Windows To Go needs an image with sources/install.wim"
+msgstr "Windows To Go vereist een image met sources/install.wim"
+
+#: stoke/job.py:168
+msgid "Windows To Go needs NTFS"
+msgstr "Windows To Go vereist NTFS"
+
+#: stoke/job.py:170
+msgid "this image has files over 4 GB that cannot be split; use NTFS or exFAT"
+msgstr "deze image bevat bestanden groter dan 4 GB die niet kunnen worden gesplitst; gebruik NTFS of exFAT"
+
+#: stoke/job.py:172
+msgid "this image does not support a persistent partition"
+msgstr "deze image ondersteunt geen permanente partitie"
+
+#: stoke/job.py:174
+msgid ""
+"this image has files over 4 GB; FAT32 cannot hold them, use NTFS or exFAT"
+msgstr "deze image bevat bestanden groter dan 4 GB; FAT32 kan deze niet bevatten, gebruik NTFS of exFAT"
+
+#: stoke/job.py:176
+#, python-format
+msgid "the image needs %s but the drive has %s"
+msgstr "de image vereist %s maar het station heeft %s"
+
+#: stoke/job.py:228
+msgid "Writing image..."
+msgstr "Image wordt geschreven..."
+
+#: stoke/job.py:230 stoke/job.py:393
+msgid "Finalizing..."
+msgstr "Bezig met afronden..."
+
+#: stoke/job.py:234
+msgid "Zeroing drive..."
+msgstr "Station wordt genuld..."
+
+#: stoke/job.py:239
+msgid "Creating partition table..."
+msgstr "Partitietabel wordt aangemaakt..."
+
+#: stoke/job.py:264
+msgid "Formatting..."
+msgstr "Bezig met formatteren..."
+
+#: stoke/job.py:285
+msgid "Writing boot records..."
+msgstr "Opstartrecords worden geschreven..."
+
+#: stoke/job.py:321
+msgid "Copying files..."
+msgstr "Bestanden worden gekopieerd..."
+
+#: stoke/job.py:321
+msgid "Preparing volume..."
+msgstr "Volume wordt voorbereid..."
+
+#: stoke/job.py:333
+msgid "could not read the partition GUIDs back from the new table"
+msgstr "kon de partitie-GUID's niet terug uit de nieuwe tabel lezen"
+
+#: stoke/job.py:383
+msgid "Applying customization..."
+msgstr "Aanpassingen worden toegepast..."
+
+#: stoke/job.py:383
+msgid "Finalizing files..."
+msgstr "Bestanden worden afgerond..."
+
+#: stoke/job.py:434
+msgid "Checking for bad blocks..."
+msgstr "Controleren op slechte blokken..."
+
+#: stoke/job.py:465
+#, python-format
+msgid ""
+"bad blocks check found %d bad block(s); this drive should not be trusted"
+msgstr "de controle op slechte blokken vond %d slecht(e) blok(ken); dit station is niet betrouwbaar"
+
+#: stoke/job.py:478
+#, python-format
+msgid ""
+"Windows To Go needs %s of temporary space in %s; only %s is free (set TMPDIR "
+"to a larger location)"
+msgstr "Windows To Go vereist %s tijdelijke ruimte in %s; slechts %s vrij (stel TMPDIR in op een locatie met meer ruimte)"
+
+#: stoke/job.py:481
+msgid "Extracting install image..."
+msgstr "Installatie-image wordt uitgepakt..."
+
+#: stoke/job.py:498
+msgid "image has no BCD template to build the boot store from"
+msgstr "image heeft geen BCD-sjabloon om de opstartopslag mee op te bouwen"
+
+#: stoke/layout.py:68
+#, python-format
+msgid "unknown partition scheme %s"
+msgstr "onbekend partitieschema %s"
+
+#: stoke/layout.py:93
+msgid "an MSR partition needs GPT"
+msgstr "een MSR-partitie vereist GPT"
+
+#: stoke/layout.py:110
+msgid "persistence requested with no size"
+msgstr "persistentie aangevraagd zonder grootte"
+
+#: stoke/layout.py:138
+msgid "too many partitions"
+msgstr "te veel partities"
+
+#: stoke/layout.py:146
+#, python-format
+msgid "%s does not fit on this drive"
+msgstr "%s past niet op dit station"
+
+#: stoke/layout.py:150 stoke/layout.py:155
+msgid "drive is too small for this layout"
+msgstr "station is te klein voor deze indeling"
+
+#: stoke/layout.py:247
+#, python-format
+msgid "%s did not appear after partitioning"
+msgstr "%s verscheen niet na het partitioneren"
+
+#: stoke/linux.py:99
+#, python-format
+msgid "extlinux failed: %s"
+msgstr "extlinux is mislukt: %s"
+
+#: stoke/mountctl.py:82
+#, python-format
+msgid "%s is active swap; deactivate it first"
+msgstr "%s is actieve swap; deactiveer deze eerst"
+
+#: stoke/mountctl.py:93
+#, python-format
+msgid "%s is in use (%s); close anything using it and try again"
+msgstr "%s is in gebruik (%s); sluit alles wat het gebruikt en probeer het opnieuw"
+
+#: stoke/mountctl.py:128
+#, python-format
+msgid "could not mount %s (%s): %s"
+msgstr "kon %s niet koppelen (%s): %s"
+
+#: stoke/mountctl.py:128
+msgid "no mount helper"
+msgstr "geen koppelhelper"
+
+#: stoke/util.py:147
+#, python-format
+msgid "'%s' is not available on this system%s"
+msgstr "'%s' is niet beschikbaar op dit systeem%s"
+
+#: stoke/util.py:180 stoke/wim.py:114
+#, python-format
+msgid "%s failed: %s"
+msgstr "%s is mislukt: %s"
+
+#: stoke/util.py:212
+#, python-format
+msgid "short write to %s at %s"
+msgstr "onvolledige schrijfactie naar %s bij %s"
+
+#: stoke/util.py:226
+#, python-format
+msgid "missing payload file: %s"
+msgstr "ontbrekend payloadbestand: %s"
+
+#: stoke/wim.py:59 stoke/wim.py:75
+#, python-format
+msgid "%s is not a WIM file"
+msgstr "%s is geen WIM-bestand"
+
+#: stoke/wim.py:63
+#, python-format
+msgid "%s has no XML index"
+msgstr "%s heeft geen XML-index"
+
+#: stoke/wim.py:131
+#, python-format
+msgid "wimupdate failed: %s"
+msgstr "wimupdate is mislukt: %s"
+
+#: stoke/wim.py:170
+#, python-format
+msgid "wimapply failed: %s"
+msgstr "wimapply is mislukt: %s"
+
+#: stoke/windows.py:73
+msgid "SYSTEM hive has no Setup key"
+msgstr "SYSTEM-hive heeft geen Setup-sleutel"
+
+#: stoke/windows.py:97
+msgid "Applying Windows customization..."
+msgstr "Windows-aanpassingen worden toegepast..."
+
+#: stoke/windows.py:171
+msgid "sources/boot.wim not found; cannot add the answer file"
+msgstr "sources/boot.wim niet gevonden; kan het antwoordbestand niet toevoegen"
+
+#: stoke/windows.py:187
+msgid "Updating boot.wim..."
+msgstr "boot.wim wordt bijgewerkt..."
+
+#: stoke/windows.py:272
+#, python-format
+msgid "%s\\%s not found on the media"
+msgstr "%s\\%s niet gevonden op de media"
+
+#: stoke/windows.py:289
+msgid ""
+"media has \\minint but no /minint option and no \\i386: unsure how to boot it"
+msgstr "media heeft \\minint maar geen /minint-optie en geen \\i386: onduidelijk hoe op te starten"
+
+#: stoke/windows.py:353
+#, python-format
+msgid "%s not found in %s"
+msgstr "%s niet gevonden in %s"
+
+#: stoke/windows.py:385
+msgid "no OS loader entry in the BCD template"
+msgstr "geen besturingssysteemlader-item in de BCD-sjabloon"
+
+#: stoke/windows.py:480
+msgid "Applying Windows image (this takes a while)..."
+msgstr "Windows-image wordt toegepast (dit duurt even)..."
+
+#: stoke/windows.py:488
+msgid "applied image has no Windows directory"
+msgstr "toegepaste image heeft geen Windows-map"
+
+#: stoke/windows.py:500
+msgid "applied image has no Windows\\Boot\\EFI"
+msgstr "toegepaste image heeft geen Windows\\Boot\\EFI"
+
+#: stoke/windows.py:558
+#, python-format
+msgid "could not mount %s (NTFS): neither ntfs3 nor ntfs-3g worked"
+msgstr "kon %s niet koppelen (NTFS): noch ntfs3 noch ntfs-3g werkte"
+
+#: stoke/writer.py:50
+msgid ""
+"only fixed-size VHD images can be written; convert dynamic VHD/VHDX with "
+"qemu-img first"
+msgstr "alleen VHD-images met vaste grootte kunnen worden geschreven; converteer dynamische VHD/VHDX eerst met qemu-img"
+
+#: stoke/writer.py:90
+#, python-format
+msgid "image is %s but the drive holds only %s"
+msgstr "image is %s maar het station biedt slechts %s"
+
+#: stoke/writer.py:111
+msgid "image is larger than the drive"
+msgstr "image is groter dan het station"
+
+#: stoke/writer.py:156
+#, python-format
+msgid ""
+"verification failed at offset %s: the drive does not hold what was written"
+msgstr "verificatie is mislukt bij offset %s: het station bevat niet wat er is geschreven"

@@ -10,9 +10,9 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CMD="${1:?usage: guest-run.sh <shell command>}"
 # Writing a 5 GB image is legitimately slow; a fixed ceiling turns that into
 # a failure that looks like the guest is broken.
-WAIT="${FUBUKI_GUEST_TIMEOUT:-60}"
+WAIT="${STOKE_GUEST_TIMEOUT:-60}"
 
-exec python3 - "$HERE/out/qga-${FUBUKI_VM:-usb}.sock" "$CMD" "$WAIT" <<'PY'
+exec python3 - "$HERE/out/qga-${STOKE_VM:-usb}.sock" "$CMD" "$WAIT" <<'PY'
 import base64, json, socket, sys, time
 
 sock_path, command = sys.argv[1], sys.argv[2]

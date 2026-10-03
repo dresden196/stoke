@@ -1,0 +1,40 @@
+# Maintainer: Dresden Wildey <dresden196@gmail.com>
+#
+# The USB writer's window. Everything that looks at a disk or an image and
+# every decision about what will boot lives in stoke; this draws what
+# the engine reports and hands it a job. A second opinion here would be the
+# one people believed, and the one nobody tested.
+pkgname=stoke-qt
+# fubuki-ui (to 0.2.1) and fubuki-qt (to 0.2.3) were this package's names.
+provides=('fubuki-ui' 'fubuki-qt')
+conflicts=('fubuki-ui' 'fubuki-qt')
+replaces=('fubuki-ui' 'fubuki-qt')
+pkgver=0.3.0
+pkgrel=1
+pkgdesc="Stoke bootable USB writer: the window"
+arch=('x86_64')
+url="https://github.com/dresden196/stoke"
+license=('GPL-3.0-or-later')
+depends=('stoke' 'qt6-base' 'qt6-declarative' 'kirigami' 'ki18n'
+         'qqc2-desktop-style' 'polkit' 'systemd')
+makedepends=('cmake' 'extra-cmake-modules' 'qt6-tools' 'gettext')
+
+build() {
+    cp -r "$startdir/app" "$srcdir/app-src"
+    # po/ is a sibling of app/ in the checkout; CMakeLists.txt finds it at
+    # ../po relative to the source dir, so it has to stay a sibling here too.
+    cp -r "$startdir/po" "$srcdir/po"
+    cmake -S "$srcdir/app-src" -B "$srcdir/build" \
+        -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+    cmake --build "$srcdir/build" --parallel
+}
+
+package() {
+    # The icon (hicolor/scalable/apps/stoke.svg) comes with the engine
+    # package, which both front-ends depend on.
+    DESTDIR="$pkgdir" cmake --install "$srcdir/build"
+    ln -s stoke-qt "$pkgdir/usr/bin/fubuki-qt"
+    ln -s stoke-qt "$pkgdir/usr/bin/fubuki-ui"
+    install -Dm644 "$startdir/io.github.dresden196.stoke.desktop" \
+        "$pkgdir/usr/share/applications/io.github.dresden196.stoke.desktop"
+}

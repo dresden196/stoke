@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Stoke (GTK)
+GenericName=Bootable USB Creator
+Comment=Write bootable USB drives from ISO and disk images
+Exec=stoke-gtk %f
+Icon=stoke
+Terminal=false
+Categories=System;Utility;
+Keywords=usb;iso;bootable;flash;write;rufus;image;
+# So an ISO can be opened with the writer from a file manager. Opening only
+# selects the image; the drive is still chosen and confirmed in the window.
+MimeType=application/x-cd-image;application/x-iso9660-image;application/x-raw-disk-image;

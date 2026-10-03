@@ -4,36 +4,36 @@
 #
 #   tests/usb/boot-stick.sh bios 40 out/shot.png
 #   tests/usb/boot-stick.sh uefi 60 out/shot.png
-#   FUBUKI_STICK_PERSIST=1 ...   keep what the guest writes (to read its logs afterwards)
+#   STOKE_STICK_PERSIST=1 ...   keep what the guest writes (to read its logs afterwards)
 set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-OUT="${FUBUKI_OUT:-$HERE/out}"
+OUT="${STOKE_OUT:-$HERE/out}"
 MODE="${1:-bios}"
 WAIT="${2:-40}"
 SHOT="${3:-$OUT/stick-$MODE.png}"
-STICK="${FUBUKI_STICK:-$OUT/usb-stick.img}"
+STICK="${STOKE_STICK:-$OUT/usb-stick.img}"
 QMP="$OUT/qmp-stickboot.sock"
 LOG="$OUT/console-stickboot-$MODE.log"
 rm -f "$QMP" "$LOG"
 
-# FUBUKI_BOOT_BUS=sata attaches the image as a SATA disk instead of a USB
+# STOKE_BOOT_BUS=sata attaches the image as a SATA disk instead of a USB
 # stick, to tell a guest OS's USB-boot limitation from a bad boot chain.
-# FUBUKI_USB_CTRL=ehci puts the stick on a USB 2.0 controller: XP has no
+# STOKE_USB_CTRL=ehci puts the stick on a USB 2.0 controller: XP has no
 # xHCI driver, so a stick on USB 3.0 is invisible to its kernel.
-if [[ "${FUBUKI_USB_CTRL:-xhci}" == "ehci" ]]; then
+if [[ "${STOKE_USB_CTRL:-xhci}" == "ehci" ]]; then
     bus_args=(-device usb-ehci,id=ehci -device usb-storage,bus=ehci.0,drive=stick,removable=on,bootindex=0)
 else
     bus_args=(-device qemu-xhci,id=xhci -device usb-storage,bus=xhci.0,drive=stick,removable=on,bootindex=0)
 fi
-[[ "${FUBUKI_BOOT_BUS:-usb}" == "sata" ]] && bus_args=(-device ide-hd,drive=stick,bootindex=0)
-# FUBUKI_EXTRA_DISK=1 adds an empty SATA disk (XP setup media expect one).
+[[ "${STOKE_BOOT_BUS:-usb}" == "sata" ]] && bus_args=(-device ide-hd,drive=stick,bootindex=0)
+# STOKE_EXTRA_DISK=1 adds an empty SATA disk (XP setup media expect one).
 extra_args=()
-if [[ -n "${FUBUKI_EXTRA_DISK:-}" ]]; then
+if [[ -n "${STOKE_EXTRA_DISK:-}" ]]; then
     qemu-img create -f qcow2 "$OUT/stick-extra.qcow2" 20G >/dev/null
     extra_args=(-drive file="$OUT/stick-extra.qcow2",if=none,id=hd0,format=qcow2 -device ide-hd,drive=hd0,bootindex=1)
 fi
 SNAPSHOT=",snapshot=on"
-[[ -n "${FUBUKI_STICK_PERSIST:-}" ]] && SNAPSHOT=""
+[[ -n "${STOKE_STICK_PERSIST:-}" ]] && SNAPSHOT=""
 fw_args=()
 if [[ "$MODE" == "uefi" ]]; then
     VARS="$OUT/OVMF_VARS-stickboot.fd"
@@ -41,7 +41,7 @@ if [[ "$MODE" == "uefi" ]]; then
     fw_args=(-drive if=pflash,format=raw,unit=0,readonly=on,file="${OVMF_DIR:-/usr/share/edk2/x64}/OVMF_CODE.4m.fd"
              -drive if=pflash,format=raw,unit=1,file="$VARS")
 fi
-qemu-system-x86_64 -enable-kvm -machine "${FUBUKI_MACHINE:-q35}" -cpu host -smp 4 -m "${FUBUKI_BOOT_MEM:-3G}" \
+qemu-system-x86_64 -enable-kvm -machine "${STOKE_MACHINE:-q35}" -cpu host -smp 4 -m "${STOKE_BOOT_MEM:-3G}" \
     "${fw_args[@]}" \
     -drive file="$STICK",if=none,id=stick,format=raw,file.locking=off$SNAPSHOT \
     "${bus_args[@]}" "${extra_args[@]}" \

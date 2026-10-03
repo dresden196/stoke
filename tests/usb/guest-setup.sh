@@ -3,7 +3,7 @@
 # install the engine's dependencies, give it scratch space.
 set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-export FUBUKI_VM="${FUBUKI_VM:-usb}"
+export STOKE_VM="${STOKE_VM:-usb}"
 RUN="$HERE/guest-run.sh"
 
 echo ">> waiting for the guest agent"
@@ -13,15 +13,15 @@ for _ in $(seq 1 120); do
 done
 "$RUN" 'true' >/dev/null || { echo "guest agent never answered" >&2; exit 1; }
 
-FUBUKI_GUEST_TIMEOUT=900 "$RUN" '
+STOKE_GUEST_TIMEOUT=900 "$RUN" '
 set -e
-mkdir -p /mnt/fubuki /mnt/isos /mnt/live /var/tmp/fubuki
-mountpoint -q /mnt/fubuki || mount -t 9p -o trans=virtio,version=9p2000.L,msize=262144 fubuki /mnt/fubuki
+mkdir -p /mnt/stoke /mnt/isos /mnt/live /var/tmp/stoke
+mountpoint -q /mnt/stoke || mount -t 9p -o trans=virtio,version=9p2000.L,msize=262144 stoke /mnt/stoke
 mountpoint -q /mnt/isos || mount -t 9p -o trans=virtio,version=9p2000.L,msize=262144 isos /mnt/isos
 mountpoint -q /mnt/live || mount -t 9p -o trans=virtio,version=9p2000.L,msize=262144 live /mnt/live
-if ! mountpoint -q /var/tmp/fubuki; then
+if ! mountpoint -q /var/tmp/stoke; then
     blkid /dev/vda >/dev/null 2>&1 || mkfs.ext4 -q -F /dev/vda
-    mount /dev/vda /var/tmp/fubuki
+    mount /dev/vda /var/tmp/stoke
 fi
 missing=""
 for p in python python-pyudev util-linux dosfstools ntfs-3g exfatprogs e2fsprogs syslinux grub parted wimlib hivex; do

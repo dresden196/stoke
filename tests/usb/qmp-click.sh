@@ -5,7 +5,7 @@ set -euo pipefail
 python3 - "${1:?sock}" "${2:?x}" "${3:?y}" <<'PY'
 import json, socket, sys, time
 sock, x, y = sys.argv[1], int(sys.argv[2]), int(sys.argv[3])
-W, H = int(__import__("os").environ.get("FUBUKI_SCREEN_W", 1280)), int(__import__("os").environ.get("FUBUKI_SCREEN_H", 800))
+W, H = int(__import__("os").environ.get("STOKE_SCREEN_W", 1280)), int(__import__("os").environ.get("STOKE_SCREEN_H", 800))
 s = socket.socket(socket.AF_UNIX); s.connect(sock); f = s.makefile("rw")
 def cmd(name, **args):
     f.write(json.dumps({"execute": name, "arguments": args} if args else {"execute": name}) + "\n"); f.flush()

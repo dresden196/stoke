@@ -3,12 +3,12 @@ __pycache__/
 out/
 build/
 # makepkg leftovers
-/fubuki/src/
-/fubuki/pkg/
-/fubuki-qt/src/
-/fubuki-qt/pkg/
-/fubuki-gtk/src/
-/fubuki-gtk/pkg/
+/stoke/src/
+/stoke/pkg/
+/stoke-qt/src/
+/stoke-qt/pkg/
+/stoke-gtk/src/
+/stoke-gtk/pkg/
 *.pkg.tar.zst
 dist/
 /packaging/appimage/AppDir/

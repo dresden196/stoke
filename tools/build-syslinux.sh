@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Rebuild the Syslinux payload (fubuki/payload/syslinux) from source.
+# Rebuild the Syslinux payload (stoke/payload/syslinux) from source.
 #
 # The 6.04-pre1 release tarball is too old: its gfxboot.c32 cannot load the
 # kernel of Ubuntu 20.04 ("live: file not found"), and .c32 modules must
@@ -31,7 +31,7 @@ done
 truncate --size 0 mk/devel.mk
 export LDFLAGS="${LDFLAGS:-}--no-dynamic-linker" EXTRA_CFLAGS=-fno-PIE
 make -j"$(nproc)" PYTHON=python bios > build.log 2>&1 || { tail -30 build.log; exit 1; }
-OUT="$ROOT/fubuki/payload/syslinux"
+OUT="$ROOT/stoke/payload/syslinux"
 rm -rf "$OUT"; mkdir -p "$OUT"
 cp bios/core/ldlinux.sys bios/core/ldlinux.bss "$OUT/"
 find bios/com32 -name '*.c32' -exec cp {} "$OUT/" \;

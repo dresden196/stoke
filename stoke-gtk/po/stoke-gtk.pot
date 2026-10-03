@@ -1,0 +1,446 @@
+# Stoke GTK window translation template.
+# Copyright (C) 2026 Dresden Wildey
+# This file is distributed under the same license as the stoke-gtk package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: stoke-gtk 0.1.0\n"
+"Report-Msgid-Bugs-To: dresden196@gmail.com\n"
+"POT-Creation-Date: 2026-09-09 20:24-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: stoke_gtk/app.py:76
+msgid "Write bootable USB drives"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:17
+msgid "Remove requirement for 4GB+ RAM, Secure Boot and TPM 2.0"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:18
+msgid "Remove requirement for an online Microsoft account"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:19
+msgid "Create a local account with username:"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:20
+msgid "Set regional options to the same values as this user's"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:21
+msgid "Disable data collection (Skip privacy questions)"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:22
+msgid "Disable BitLocker automatic device encryption"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:23
+msgid "Set internal drives offline"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:24
+msgid ""
+"Apply Windows quality-of-life defaults (no OneDrive/Outlook/Copilot/ads)"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:25
+msgid "Silent unattended installation (wipes disk 0!)"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:26
+msgid "Use 'Windows UEFI CA 2023' signed bootloaders"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:34
+msgid ""
+"Device: %1\n"
+"Size: %2"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:35
+msgid "Device: %1"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:37
+msgid "WARNING: ALL DATA ON DEVICE '%1' WILL BE DESTROYED."
+msgstr ""
+
+#: stoke_gtk/dialogs.py:38
+msgid "To continue with this operation, click OK. To quit click CANCEL."
+msgstr ""
+
+#: stoke_gtk/dialogs.py:40 stoke_gtk/dialogs.py:86
+msgid "Cancel"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:41 stoke_gtk/dialogs.py:89
+msgid "OK"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:56
+msgid "Write in progress"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:57
+msgid "A drive is still being written. Cancel it and close?"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:59
+msgid "No"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:60
+msgid "Yes"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:78
+msgid "Windows User Experience"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:96
+msgid "Customize the Windows installation:"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:114
+msgid "Username"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:119 stoke_gtk/window.py:285
+msgid "Windows edition"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:169
+msgid "Checksums"
+msgstr ""
+
+#: stoke_gtk/dialogs.py:205
+msgid "Computing…"
+msgstr ""
+
+#: stoke_gtk/engine.py:131
+msgid "%1 could not be run"
+msgstr ""
+
+#: stoke_gtk/engine.py:147
+msgid "The engine is not running."
+msgstr ""
+
+#: stoke_gtk/engine.py:298
+msgid "Authentication was cancelled."
+msgstr ""
+
+#: stoke_gtk/engine.py:300
+msgid "The engine could not be started: %1"
+msgstr ""
+
+#: stoke_gtk/engine.py:301
+msgid "The engine could not be started (exit code %1)."
+msgstr ""
+
+#: stoke_gtk/engine.py:303
+msgid "The engine crashed."
+msgstr ""
+
+#: stoke_gtk/engine.py:305
+msgid "The engine stopped unexpectedly (exit code %1)."
+msgstr ""
+
+#: stoke_gtk/engine.py:309
+msgid "The engine has quit."
+msgstr ""
+
+#: stoke_gtk/engine.py:384
+msgid "%1 %2 engine started%3\n"
+msgstr ""
+
+#: stoke_gtk/engine.py:385
+msgid " (root)"
+msgstr ""
+
+#: stoke_gtk/engine.py:492
+msgid "Scanning image…"
+msgstr ""
+
+#: stoke_gtk/engine.py:493
+msgid "Scanning image: %1\n"
+msgstr ""
+
+#: stoke_gtk/engine.py:504 stoke_gtk/engine.py:612
+msgid "READY"
+msgstr ""
+
+#: stoke_gtk/engine.py:506
+msgid "Warning: %1\n"
+msgstr ""
+
+#: stoke_gtk/engine.py:511
+msgid "The image could not be read."
+msgstr ""
+
+#: stoke_gtk/engine.py:550
+msgid "Checksums could not be computed."
+msgstr ""
+
+#: stoke_gtk/engine.py:582
+msgid "Starting…"
+msgstr ""
+
+#: stoke_gtk/engine.py:583
+msgid "Writing %1\n"
+msgstr ""
+
+#: stoke_gtk/engine.py:613
+msgid "Done.\n"
+msgstr ""
+
+#: stoke_gtk/engine.py:616
+msgid "Cancelled."
+msgstr ""
+
+#: stoke_gtk/engine.py:618
+msgid "The write failed."
+msgstr ""
+
+#: stoke_gtk/engine.py:643
+msgid "Cancelling…"
+msgstr ""
+
+#: stoke_gtk/engine.py:684
+msgid "Error: %1\n"
+msgstr ""
+
+#: stoke_gtk/window.py:157
+msgid "Disk or ISO image (Please select)"
+msgstr ""
+
+#: stoke_gtk/window.py:158
+msgid "Non bootable"
+msgstr ""
+
+#: stoke_gtk/window.py:159
+msgid "FreeDOS"
+msgstr ""
+
+#: stoke_gtk/window.py:160
+msgid "UEFI:NTFS"
+msgstr ""
+
+#: stoke_gtk/window.py:161
+msgid "Syslinux (embedded)"
+msgstr ""
+
+#: stoke_gtk/window.py:168
+msgid "Standard Windows installation"
+msgstr ""
+
+#: stoke_gtk/window.py:168
+msgid "Windows To Go"
+msgstr ""
+
+#: stoke_gtk/window.py:172
+msgid "ISO Image mode (Recommended)"
+msgstr ""
+
+#: stoke_gtk/window.py:174
+msgid "DD Image mode"
+msgstr ""
+
+#: stoke_gtk/window.py:185 stoke_gtk/window.py:186
+msgid "UEFI (non CSM)"
+msgstr ""
+
+#: stoke_gtk/window.py:186
+msgid "BIOS (or UEFI-CSM)"
+msgstr ""
+
+#: stoke_gtk/window.py:186
+msgid "BIOS or UEFI"
+msgstr ""
+
+#: stoke_gtk/window.py:207
+msgid "Default"
+msgstr ""
+
+#: stoke_gtk/window.py:209
+msgid " (Default)"
+msgstr ""
+
+#: stoke_gtk/window.py:241
+msgid "About Stoke"
+msgstr ""
+
+#: stoke_gtk/window.py:242
+msgid "Quit"
+msgstr ""
+
+#: stoke_gtk/window.py:255
+msgid "Drive Properties"
+msgstr ""
+
+#: stoke_gtk/window.py:258
+msgid "Device"
+msgstr ""
+
+#: stoke_gtk/window.py:260
+msgid "Refresh the device list"
+msgstr ""
+
+#: stoke_gtk/window.py:267
+msgid "Boot selection"
+msgstr ""
+
+#: stoke_gtk/window.py:268
+msgid "Compute image checksums"
+msgstr ""
+
+#: stoke_gtk/window.py:272
+msgctxt "@action:button"
+msgid "SELECT"
+msgstr ""
+
+#: stoke_gtk/window.py:278
+msgid ""
+"This image cannot be written: it is neither a bootable ISO nor a disk image."
+msgstr ""
+
+#: stoke_gtk/window.py:283
+msgid "Image option"
+msgstr ""
+
+#: stoke_gtk/window.py:289
+msgid "Persistent partition size"
+msgstr ""
+
+#: stoke_gtk/window.py:290 stoke_gtk/window.py:442
+msgid "0 (No persistence)"
+msgstr ""
+
+#: stoke_gtk/window.py:296
+msgid "Partition scheme"
+msgstr ""
+
+#: stoke_gtk/window.py:298
+msgid "Target system"
+msgstr ""
+
+#: stoke_gtk/window.py:301 stoke_gtk/window.py:791
+msgid "Show advanced drive properties"
+msgstr ""
+
+#: stoke_gtk/window.py:303
+msgid "List USB Hard Drives"
+msgstr ""
+
+#: stoke_gtk/window.py:306
+msgid "Add fixes for old BIOSes (extra partition, align, etc.)"
+msgstr ""
+
+#: stoke_gtk/window.py:309
+msgid "Use masquerading MBR (BIOS ID 0x81)"
+msgstr ""
+
+#: stoke_gtk/window.py:315
+msgid "Format Options"
+msgstr ""
+
+#: stoke_gtk/window.py:318
+msgid "Volume label"
+msgstr ""
+
+#: stoke_gtk/window.py:321
+msgid "File system"
+msgstr ""
+
+#: stoke_gtk/window.py:323
+msgid "Cluster size"
+msgstr ""
+
+#: stoke_gtk/window.py:326 stoke_gtk/window.py:796
+msgid "Show advanced format options"
+msgstr ""
+
+#: stoke_gtk/window.py:328
+msgid "Quick format"
+msgstr ""
+
+#: stoke_gtk/window.py:331
+msgid "Create extended label and icon files"
+msgstr ""
+
+#: stoke_gtk/window.py:334
+msgid "Check device for bad blocks"
+msgstr ""
+
+#: stoke_gtk/window.py:342
+msgid "%1 pass"
+msgid_plural "%1 passes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: stoke_gtk/window.py:352
+msgid "Status"
+msgstr ""
+
+#: stoke_gtk/window.py:366
+msgctxt "@action:button toggles the log pane"
+msgid "Log"
+msgstr ""
+
+#: stoke_gtk/window.py:372 stoke_gtk/window.py:476
+msgctxt "@action:button"
+msgid "START"
+msgstr ""
+
+#: stoke_gtk/window.py:376
+msgctxt "@action:button"
+msgid "CLOSE"
+msgstr ""
+
+#: stoke_gtk/window.py:391
+msgid "Nothing logged yet."
+msgstr ""
+
+#: stoke_gtk/window.py:413
+msgid "No device found"
+msgstr ""
+
+#: stoke_gtk/window.py:441
+msgid "%1 persistent partition"
+msgstr ""
+
+#: stoke_gtk/window.py:475
+msgctxt "@action:button"
+msgid "CANCEL"
+msgstr ""
+
+#: stoke_gtk/window.py:636
+msgid "Select an image"
+msgstr ""
+
+#: stoke_gtk/window.py:638
+msgid "Disk images (%1)"
+msgstr ""
+
+#: stoke_gtk/window.py:642
+msgid "All files (%1)"
+msgstr ""
+
+#: stoke_gtk/window.py:790
+msgid "Hide advanced drive properties"
+msgstr ""
+
+#: stoke_gtk/window.py:795
+msgid "Hide advanced format options"
+msgstr ""

@@ -8,7 +8,7 @@ machine, produced by the scripts in `tests/usb/`.
 - `tests/usb/native.sh <scenario> [iso]` writes a sparse disk image through a
   loop device on the host and boots it in QEMU under BIOS and UEFI. The quick
   check; needs root and a kernel that can mount the target file systems.
-- `tests/usb/vm.sh` boots an Arch-based live ISO (`FUBUKI_LIVE_ISO`) with an
+- `tests/usb/vm.sh` boots an Arch-based live ISO (`STOKE_LIVE_ISO`) with an
   emulated USB stick and shares this tree into it; `guest-setup.sh` installs
   the engine's dependencies; `run.sh <scenario>` drives the engine inside the
   guest and boots the result on the host (`boot-stick.sh`).
@@ -19,9 +19,9 @@ machine, produced by the scripts in `tests/usb/`.
   an empty disk with no TPM attached; `test-cancel.sh` covers cancel
   mid-write, running out of temporary space, and refused devices.
 
-Knobs: `FUBUKI_MACHINE=pc` (pre-q35 chipset), `FUBUKI_USB_CTRL=ehci` (USB 2.0
-controller), `FUBUKI_EXTRA_DISK=1` (an empty SATA disk), `FUBUKI_BOOT_MEM`,
-`FUBUKI_STICK_PERSIST=1` (keep the guest's writes, to read its logs after).
+Knobs: `STOKE_MACHINE=pc` (pre-q35 chipset), `STOKE_USB_CTRL=ehci` (USB 2.0
+controller), `STOKE_EXTRA_DISK=1` (an empty SATA disk), `STOKE_BOOT_MEM`,
+`STOKE_STICK_PERSIST=1` (keep the guest's writes, to read its logs after).
 
 ## Verified
 
@@ -61,16 +61,16 @@ with `boot-real.sh` over USB passthrough):
 | Media | Written by | BIOS | UEFI |
 |---|---|---|---|
 | Windows 11 24H2, NTFS via UEFI:NTFS, GPT | the Flatpak, as a plain user (polkit prompt) | | Setup, also under enforcing Secure Boot |
-| Ubuntu 24.04 Server, 2 GB persistence, MBR/FAT32 | `FUBUKI_BACKEND=udisks` as root | systemd | systemd |
+| Ubuntu 24.04 Server, 2 GB persistence, MBR/FAT32 | `STOKE_BACKEND=udisks` as root | systemd | systemd |
 
-ISO downloader (0.2.3, a Fido port): `fubuki download` and both windows'
+ISO downloader (0.2.3, a Fido port): `stoke download` and both windows'
 Download dialogs fetched the live language list and a Windows 11 25H2 x64
 link from Microsoft, and downloaded the UEFI Shell 2.2 ISO from GitHub,
 which each window then adopted as its boot selection.
 
-Packages (0.2.2): `Fubuki-qt-*.AppImage` and `Fubuki-gtk-*.AppImage` start on
+Packages (0.2.2): `Stoke-qt-*.AppImage` and `Stoke-gtk-*.AppImage` start on
 a bare X server and spawn their bundled engine; the two Flatpaks
-(`io.github.dresden196.fubuki` on the KDE runtime, `.gtk` on the GNOME
+(`io.github.dresden196.stoke` on the KDE runtime, `.gtk` on the GNOME
 runtime) report `backend: udisks, can_write: true` and list the stick.
 
 Known limitation, same as Rufus: a Linux ISO written to **exFAT** reaches

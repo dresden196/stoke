@@ -1,0 +1,416 @@
+# Stoke UI translation template.
+# Copyright (C) 2026 Dresden Wildey
+# This file is distributed under the same license as the stoke-qt package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: stoke-qt 0.1.0\n"
+"Report-Msgid-Bugs-To: dresden196@gmail.com\n"
+"POT-Creation-Date: 2026-09-08 15:30-0400\n"
+"PO-Revision-Date: 2026-09-08 15:30-0400\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: app/src/qml/ChecksumDialog.qml:13
+msgid "Checksums"
+msgstr "Checksums"
+
+#: app/src/qml/ChecksumDialog.qml:63
+msgid "Computing…"
+msgstr "Berekenen…"
+
+#: app/src/qml/ConfirmDialog.qml:40
+msgid "WARNING: ALL DATA ON DEVICE '%1' WILL BE DESTROYED."
+msgstr "WAARSCHUWING: ALLE GEGEVENS OP APPARAAT '%1' WORDEN VERNIETIGD."
+
+#: app/src/qml/ConfirmDialog.qml:46
+msgid ""
+"Device: %1\n"
+"Size: %2"
+msgstr "Apparaat: %1\nGrootte: %2"
+
+#: app/src/qml/ConfirmDialog.qml:47
+msgid "Device: %1"
+msgstr "Apparaat: %1"
+
+#: app/src/qml/ConfirmDialog.qml:52
+msgid "To continue with this operation, click OK. To quit click CANCEL."
+msgstr "Klik op OK om door te gaan met deze bewerking. Klik op ANNULEREN om te stoppen."
+
+#: app/src/qml/Main.qml:23
+msgid "%1 pass"
+msgid_plural "%1 passes"
+msgstr[0] "%1 ronde"
+msgstr[1] "%1 rondes"
+
+#: app/src/qml/Main.qml:46
+msgid "Disk or ISO image (Please select)"
+msgstr "Schijf of ISO-image (selecteer)"
+
+#: app/src/qml/Main.qml:47
+msgid "Non bootable"
+msgstr "Niet opstartbaar"
+
+#: app/src/qml/Main.qml:48
+msgid "FreeDOS"
+msgstr "FreeDOS"
+
+#: app/src/qml/Main.qml:49
+msgid "UEFI:NTFS"
+msgstr "UEFI:NTFS"
+
+#: app/src/qml/Main.qml:50
+msgid "Syslinux (embedded)"
+msgstr "Syslinux (ingebed)"
+
+#: app/src/qml/Main.qml:79
+msgid "Standard Windows installation"
+msgstr "Standaard Windows-installatie"
+
+#: app/src/qml/Main.qml:80
+msgid "Windows To Go"
+msgstr "Windows To Go"
+
+#: app/src/qml/Main.qml:84
+msgid "ISO Image mode (Recommended)"
+msgstr "ISO-image-modus (aanbevolen)"
+
+#: app/src/qml/Main.qml:85
+msgid "DD Image mode"
+msgstr "DD-image-modus"
+
+#: app/src/qml/Main.qml:97 app/src/qml/Main.qml:99
+msgid "UEFI (non CSM)"
+msgstr "UEFI (geen CSM)"
+
+#: app/src/qml/Main.qml:98
+msgid "BIOS (or UEFI-CSM)"
+msgstr "BIOS (of UEFI-CSM)"
+
+#: app/src/qml/Main.qml:100
+msgid "BIOS or UEFI"
+msgstr "BIOS of UEFI"
+
+#: app/src/qml/Main.qml:123
+msgid "Default"
+msgstr "Standaard"
+
+#: app/src/qml/Main.qml:127
+msgid " (Default)"
+msgstr " (standaard)"
+
+#: app/src/qml/Main.qml:315
+msgid "Select an image"
+msgstr "Selecteer een image"
+
+#: app/src/qml/Main.qml:317
+msgid "Disk images (%1)"
+msgstr "Schijfimages (%1)"
+
+#: app/src/qml/Main.qml:318
+msgid "All files (%1)"
+msgstr "Alle bestanden (%1)"
+
+#: app/src/qml/Main.qml:346
+msgid "Write in progress"
+msgstr "Bezig met schrijven"
+
+#: app/src/qml/Main.qml:349
+msgid "A drive is still being written. Cancel it and close?"
+msgstr "Er wordt nog naar een station geschreven. Annuleren en sluiten?"
+
+#: app/src/qml/Main.qml:376
+msgid "Drive Properties"
+msgstr "Stationseigenschappen"
+
+#: app/src/qml/Main.qml:379
+msgid "Device"
+msgstr "Apparaat"
+
+#: app/src/qml/Main.qml:388
+msgid "No device found"
+msgstr "Geen apparaat gevonden"
+
+#: app/src/qml/Main.qml:402
+msgid "Refresh the device list"
+msgstr "Apparatenlijst vernieuwen"
+
+#: app/src/qml/Main.qml:408
+msgid "Boot selection"
+msgstr "Opstartselectie"
+
+#: app/src/qml/Main.qml:424
+msgid "Compute image checksums"
+msgstr "Checksums van de image berekenen"
+
+#: app/src/qml/Main.qml:429
+msgctxt "@action:button"
+msgid "SELECT"
+msgstr "SELECTEREN"
+
+#: app/src/qml/Main.qml:437
+msgid ""
+"This image cannot be written: it is neither a bootable ISO nor a disk image."
+msgstr "Deze image kan niet worden geschreven: het is geen opstartbare ISO en ook geen schijfimage."
+
+#: app/src/qml/Main.qml:445
+msgid "Image option"
+msgstr "Image-optie"
+
+#: app/src/qml/Main.qml:461
+msgid "Windows edition"
+msgstr "Windows-editie"
+
+#: app/src/qml/Main.qml:483
+msgid "Persistent partition size"
+msgstr "Grootte van de permanente partitie"
+
+#: app/src/qml/Main.qml:520
+msgid "%1 persistent partition"
+msgstr "Permanente partitie van %1"
+
+#: app/src/qml/Main.qml:521
+msgid "0 (No persistence)"
+msgstr "0 (geen persistentie)"
+
+#: app/src/qml/Main.qml:533
+msgid "Partition scheme"
+msgstr "Partitieschema"
+
+#: app/src/qml/Main.qml:546
+msgid "Target system"
+msgstr "Doelsysteem"
+
+#: app/src/qml/Main.qml:562
+msgid "Hide advanced drive properties"
+msgstr "Geavanceerde stationseigenschappen verbergen"
+
+#: app/src/qml/Main.qml:562
+msgid "Show advanced drive properties"
+msgstr "Geavanceerde stationseigenschappen tonen"
+
+#: app/src/qml/Main.qml:570
+msgid "List USB Hard Drives"
+msgstr "USB-harde schijven weergeven"
+
+#: app/src/qml/Main.qml:575
+msgid "Add fixes for old BIOSes (extra partition, align, etc.)"
+msgstr "Correcties voor oude BIOS'en toevoegen (extra partitie, uitlijning, enz.)"
+
+#: app/src/qml/Main.qml:581
+msgid "Use masquerading MBR (BIOS ID 0x81)"
+msgstr "Gemaskeerd MBR gebruiken (BIOS-ID 0x81)"
+
+#: app/src/qml/Main.qml:589
+msgid "Format Options"
+msgstr "Formatteeropties"
+
+#: app/src/qml/Main.qml:592
+msgid "Volume label"
+msgstr "Volumelabel"
+
+#: app/src/qml/Main.qml:610
+msgid "File system"
+msgstr "Bestandssysteem"
+
+#: app/src/qml/Main.qml:622
+msgid "Cluster size"
+msgstr "Clustergrootte"
+
+#: app/src/qml/Main.qml:637
+msgid "Hide advanced format options"
+msgstr "Geavanceerde formatteeropties verbergen"
+
+#: app/src/qml/Main.qml:637
+msgid "Show advanced format options"
+msgstr "Geavanceerde formatteeropties tonen"
+
+#: app/src/qml/Main.qml:645
+msgid "Quick format"
+msgstr "Snel formatteren"
+
+#: app/src/qml/Main.qml:650
+msgid "Create extended label and icon files"
+msgstr "Uitgebreide label- en pictogrambestanden maken"
+
+#: app/src/qml/Main.qml:657
+msgid "Check device for bad blocks"
+msgstr "Apparaat controleren op slechte blokken"
+
+#: app/src/qml/Main.qml:672
+msgid "Status"
+msgstr "Status"
+
+#: app/src/qml/Main.qml:704
+msgctxt "@action:button toggles the log pane"
+msgid "Log"
+msgstr "Logboek"
+
+#: app/src/qml/Main.qml:717
+msgctxt "@action:button"
+msgid "CANCEL"
+msgstr "ANNULEREN"
+
+#: app/src/qml/Main.qml:717
+msgctxt "@action:button"
+msgid "START"
+msgstr "STARTEN"
+
+#: app/src/qml/Main.qml:724
+msgctxt "@action:button"
+msgid "CLOSE"
+msgstr "SLUITEN"
+
+#: app/src/qml/Main.qml:744
+msgid "Nothing logged yet."
+msgstr "Nog niets vastgelegd."
+
+#: app/src/qml/WindowsOptionsDialog.qml:14
+msgid "Windows User Experience"
+msgstr "Windows-gebruikerservaring"
+
+#: app/src/qml/WindowsOptionsDialog.qml:23
+msgid "Remove requirement for 4GB+ RAM, Secure Boot and TPM 2.0"
+msgstr "Vereiste van 4 GB+ RAM, Secure Boot en TPM 2.0 verwijderen"
+
+#: app/src/qml/WindowsOptionsDialog.qml:24
+msgid "Remove requirement for an online Microsoft account"
+msgstr "Vereiste van een online Microsoft-account verwijderen"
+
+#: app/src/qml/WindowsOptionsDialog.qml:25
+msgid "Create a local account with username:"
+msgstr "Een lokaal account maken met gebruikersnaam:"
+
+#: app/src/qml/WindowsOptionsDialog.qml:26
+msgid "Set regional options to the same values as this user's"
+msgstr "Regionale instellingen instellen op dezelfde waarden als die van deze gebruiker"
+
+#: app/src/qml/WindowsOptionsDialog.qml:27
+msgid "Disable data collection (Skip privacy questions)"
+msgstr "Gegevensverzameling uitschakelen (privacyvragen overslaan)"
+
+#: app/src/qml/WindowsOptionsDialog.qml:28
+msgid "Disable BitLocker automatic device encryption"
+msgstr "Automatische BitLocker-apparaatversleuteling uitschakelen"
+
+#: app/src/qml/WindowsOptionsDialog.qml:29
+msgid "Set internal drives offline"
+msgstr "Interne stations offline zetten"
+
+#: app/src/qml/WindowsOptionsDialog.qml:30
+msgid ""
+"Apply Windows quality-of-life defaults (no OneDrive/Outlook/Copilot/ads)"
+msgstr "Windows-comfortinstellingen toepassen (geen OneDrive/Outlook/Copilot/advertenties)"
+
+#: app/src/qml/WindowsOptionsDialog.qml:31
+msgid "Silent unattended installation (wipes disk 0!)"
+msgstr "Stille onbewaakte installatie (wist schijf 0!)"
+
+#: app/src/qml/WindowsOptionsDialog.qml:32
+msgid "Use 'Windows UEFI CA 2023' signed bootloaders"
+msgstr "Bootloaders gebruiken die zijn ondertekend met 'Windows UEFI CA 2023'"
+
+#: app/src/qml/WindowsOptionsDialog.qml:81
+msgid "Customize the Windows installation:"
+msgstr "Pas de Windows-installatie aan:"
+
+#: app/src/qml/WindowsOptionsDialog.qml:104
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+#: app/src/backend.cpp:101
+msgid "%1 could not be run"
+msgstr "%1 kon niet worden uitgevoerd"
+
+#: app/src/backend.cpp:118
+msgid "The engine is not running."
+msgstr "De engine draait niet."
+
+#: app/src/backend.cpp:205
+msgid "Authentication was cancelled."
+msgstr "Authenticatie is geannuleerd."
+
+#: app/src/backend.cpp:208
+msgid "The engine could not be started (exit code %1)."
+msgstr "De engine kon niet worden gestart (afsluitcode %1)."
+
+#: app/src/backend.cpp:209
+msgid "The engine could not be started: %1"
+msgstr "De engine kon niet worden gestart: %1"
+
+#: app/src/backend.cpp:211
+msgid "The engine crashed."
+msgstr "De engine is vastgelopen."
+
+#: app/src/backend.cpp:213
+msgid "The engine stopped unexpectedly (exit code %1)."
+msgstr "De engine is onverwacht gestopt (afsluitcode %1)."
+
+#: app/src/backend.cpp:218
+msgid "The engine has quit."
+msgstr "De engine is afgesloten."
+
+#: app/src/backend.cpp:293
+msgid " (root)"
+msgstr " (root)"
+
+#: app/src/backend.cpp:290
+msgid "%1 %2 engine started%3\n"
+msgstr "%1 %2-engine gestart%3\n"
+
+#: app/src/backend.cpp:417
+msgid "Scanning image…"
+msgstr "Image scannen…"
+
+#: app/src/backend.cpp:418
+msgid "Scanning image: %1\n"
+msgstr "Image scannen: %1\n"
+
+#: app/src/backend.cpp:433 app/src/backend.cpp:557
+msgid "READY"
+msgstr "GEREED"
+
+#: app/src/backend.cpp:436
+msgid "Warning: %1\n"
+msgstr "Waarschuwing: %1\n"
+
+#: app/src/backend.cpp:443
+msgid "The image could not be read."
+msgstr "De image kon niet worden gelezen."
+
+#: app/src/backend.cpp:492
+msgid "Checksums could not be computed."
+msgstr "Checksums konden niet worden berekend."
+
+#: app/src/backend.cpp:530
+msgid "Starting…"
+msgstr "Starten…"
+
+#: app/src/backend.cpp:531
+msgid "Writing %1\n"
+msgstr "Bezig met schrijven van %1\n"
+
+#: app/src/backend.cpp:558
+msgid "Done.\n"
+msgstr "Gereed.\n"
+
+#: app/src/backend.cpp:561
+msgid "Cancelled."
+msgstr "Geannuleerd."
+
+#: app/src/backend.cpp:563
+msgid "The write failed."
+msgstr "Schrijven is mislukt."
+
+#: app/src/backend.cpp:600
+msgid "Cancelling…"
+msgstr "Bezig met annuleren…"
+
+#: app/src/backend.cpp:695
+msgid "Error: %1\n"
+msgstr "Fout: %1\n"

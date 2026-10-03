@@ -1,0 +1,401 @@
+# Stoke engine translation template.
+# Copyright (C) 2026 Dresden Wildey
+# This file is distributed under the same license as the stoke package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: stoke 0.1.0\n"
+"Report-Msgid-Bugs-To: dresden196@gmail.com\n"
+"POT-Creation-Date: 2026-09-08 15:34-0400\n"
+"PO-Revision-Date: 2026-09-08 15:34-0400\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: stoke/bootrec.py:50
+#, python-format
+msgid "unknown MBR type %s"
+msgstr "неизвестный тип MBR %s"
+
+#: stoke/bootrec.py:119
+msgid ""
+"not enough space before the first partition for the boot loader (uncheck "
+"'Add fixes for old BIOSes')"
+msgstr "недостаточно места перед первым разделом для загрузчика (снимите флажок «Добавить исправления для старых BIOS»)"
+
+#: stoke/bootrec.py:152
+msgid "new volume does not have an NTFS boot sector"
+msgstr "новый том не имеет загрузочного сектора NTFS"
+
+#: stoke/bootrec.py:160
+msgid "new volume does not have a FAT32 boot sector"
+msgstr "новый том не имеет загрузочного сектора FAT32"
+
+#: stoke/bootrec.py:192
+msgid "new volume does not have a FAT16 boot sector"
+msgstr "новый том не имеет загрузочного сектора FAT16"
+
+#: stoke/bootrec.py:203
+#, python-format
+msgid "no boot record support for %s"
+msgstr "нет поддержки загрузочной записи для %s"
+
+#: stoke/cli.py:17
+msgid "Writing a drive needs root: run through pkexec or sudo"
+msgstr "Запись на диск требует прав root: запустите через pkexec или sudo"
+
+#: stoke/cli.py:116 stoke/job.py:145
+#, python-format
+msgid "%s is not a disk"
+msgstr "%s не является диском"
+
+#: stoke/extract.py:180
+#, python-format
+msgid "'%s' is %s: FAT32 cannot hold files over 4 GB. Use NTFS or exFAT."
+msgstr "«%s» имеет размер %s: FAT32 не поддерживает файлы размером более 4 ГБ. Используйте NTFS или exFAT."
+
+#: stoke/extract.py:185
+#, python-format
+msgid "could not write %s: %s"
+msgstr "не удалось записать %s: %s"
+
+#: stoke/extract.py:203
+#, python-format
+msgid ""
+"splitting %s needs %s of temporary space in %s, only %s free. Use NTFS "
+"instead of FAT32, or set TMPDIR to a larger location."
+msgstr "для разделения %s требуется %s временного места в %s, доступно только %s. Используйте NTFS вместо FAT32 или укажите в TMPDIR каталог с большим объёмом свободного места."
+
+#: stoke/extract.py:213
+msgid "Splitting install.wim for FAT32..."
+msgstr "Разделение install.wim для FAT32…"
+
+#: stoke/fs.py:110 stoke/job.py:124 stoke/layout.py:163
+#, python-format
+msgid "unsupported file system %s"
+msgstr "неподдерживаемая файловая система %s"
+
+#: stoke/image.py:69
+#, python-format
+msgid "%s is not a file"
+msgstr "%s не является файлом"
+
+#: stoke/job.py:96
+#, python-format
+msgid "unknown boot type %s"
+msgstr "неизвестный тип загрузки %s"
+
+#: stoke/job.py:120
+msgid "scheme must be mbr or gpt"
+msgstr "схема раздела должна быть mbr или gpt"
+
+#: stoke/job.py:122
+msgid "target must be bios, uefi or dual"
+msgstr "целевая система должна быть bios, uefi или dual"
+
+#: stoke/job.py:126
+msgid "no image given"
+msgstr "не указан образ"
+
+#: stoke/job.py:128
+msgid "no device given"
+msgstr "не указано устройство"
+
+#: stoke/job.py:130
+msgid "GPT needs a UEFI target"
+msgstr "GPT требует целевую систему UEFI"
+
+#: stoke/job.py:132
+msgid "UEFI:NTFS needs an NTFS or exFAT main partition"
+msgstr "UEFI:NTFS требует основной раздел NTFS или exFAT"
+
+#: stoke/job.py:144
+#, python-format
+msgid "%s holds the running system; refusing to write it"
+msgstr "%s содержит работающую систему; запись отклонена"
+
+#: stoke/job.py:147
+#, python-format
+msgid "%s is an internal drive; refusing to write it"
+msgstr "%s является внутренним диском; запись отклонена"
+
+#: stoke/job.py:149
+#, python-format
+msgid "%s is a loop device; refusing to write it"
+msgstr "%s является loop-устройством; запись отклонена"
+
+#: stoke/job.py:158
+msgid "Scanning image..."
+msgstr "Сканирование образа…"
+
+#: stoke/job.py:162
+msgid "this ISO is not a hybrid image and cannot be written in DD mode"
+msgstr "этот ISO не является гибридным образом и не может быть записан в режиме DD"
+
+#: stoke/job.py:166
+msgid "Windows To Go needs an image with sources/install.wim"
+msgstr "Windows To Go требует образ с sources/install.wim"
+
+#: stoke/job.py:168
+msgid "Windows To Go needs NTFS"
+msgstr "Windows To Go требует NTFS"
+
+#: stoke/job.py:170
+msgid "this image has files over 4 GB that cannot be split; use NTFS or exFAT"
+msgstr "этот образ содержит файлы размером более 4 ГБ, которые невозможно разделить; используйте NTFS или exFAT"
+
+#: stoke/job.py:172
+msgid "this image does not support a persistent partition"
+msgstr "этот образ не поддерживает постоянный раздел"
+
+#: stoke/job.py:174
+msgid ""
+"this image has files over 4 GB; FAT32 cannot hold them, use NTFS or exFAT"
+msgstr "этот образ содержит файлы размером более 4 ГБ; FAT32 их не поддерживает, используйте NTFS или exFAT"
+
+#: stoke/job.py:176
+#, python-format
+msgid "the image needs %s but the drive has %s"
+msgstr "образу требуется %s, а на диске есть только %s"
+
+#: stoke/job.py:228
+msgid "Writing image..."
+msgstr "Запись образа…"
+
+#: stoke/job.py:230 stoke/job.py:393
+msgid "Finalizing..."
+msgstr "Завершение…"
+
+#: stoke/job.py:234
+msgid "Zeroing drive..."
+msgstr "Обнуление диска…"
+
+#: stoke/job.py:239
+msgid "Creating partition table..."
+msgstr "Создание таблицы разделов…"
+
+#: stoke/job.py:264
+msgid "Formatting..."
+msgstr "Форматирование…"
+
+#: stoke/job.py:285
+msgid "Writing boot records..."
+msgstr "Запись загрузочных записей…"
+
+#: stoke/job.py:321
+msgid "Copying files..."
+msgstr "Копирование файлов…"
+
+#: stoke/job.py:321
+msgid "Preparing volume..."
+msgstr "Подготовка тома…"
+
+#: stoke/job.py:333
+msgid "could not read the partition GUIDs back from the new table"
+msgstr "не удалось прочитать GUID разделов из новой таблицы"
+
+#: stoke/job.py:383
+msgid "Applying customization..."
+msgstr "Применение настроек…"
+
+#: stoke/job.py:383
+msgid "Finalizing files..."
+msgstr "Завершение записи файлов…"
+
+#: stoke/job.py:434
+msgid "Checking for bad blocks..."
+msgstr "Проверка на сбойные блоки…"
+
+#: stoke/job.py:465
+#, python-format
+msgid ""
+"bad blocks check found %d bad block(s); this drive should not be trusted"
+msgstr "проверка обнаружила сбойных блоков: %d; этому диску нельзя доверять"
+
+#: stoke/job.py:478
+#, python-format
+msgid ""
+"Windows To Go needs %s of temporary space in %s; only %s is free (set TMPDIR "
+"to a larger location)"
+msgstr "Windows To Go требует %s временного места в %s; доступно только %s (укажите в TMPDIR каталог с большим объёмом свободного места)"
+
+#: stoke/job.py:481
+msgid "Extracting install image..."
+msgstr "Извлечение установочного образа…"
+
+#: stoke/job.py:498
+msgid "image has no BCD template to build the boot store from"
+msgstr "в образе отсутствует шаблон BCD для построения хранилища загрузки"
+
+#: stoke/layout.py:68
+#, python-format
+msgid "unknown partition scheme %s"
+msgstr "неизвестная схема раздела %s"
+
+#: stoke/layout.py:93
+msgid "an MSR partition needs GPT"
+msgstr "раздел MSR требует GPT"
+
+#: stoke/layout.py:110
+msgid "persistence requested with no size"
+msgstr "запрошено сохранение данных без указания размера"
+
+#: stoke/layout.py:138
+msgid "too many partitions"
+msgstr "слишком много разделов"
+
+#: stoke/layout.py:146
+#, python-format
+msgid "%s does not fit on this drive"
+msgstr "%s не помещается на этом диске"
+
+#: stoke/layout.py:150 stoke/layout.py:155
+msgid "drive is too small for this layout"
+msgstr "диск слишком мал для этой разметки"
+
+#: stoke/layout.py:247
+#, python-format
+msgid "%s did not appear after partitioning"
+msgstr "%s не появился после разметки"
+
+#: stoke/linux.py:99
+#, python-format
+msgid "extlinux failed: %s"
+msgstr "ошибка extlinux: %s"
+
+#: stoke/mountctl.py:82
+#, python-format
+msgid "%s is active swap; deactivate it first"
+msgstr "%s является активным разделом подкачки; сначала отключите его"
+
+#: stoke/mountctl.py:93
+#, python-format
+msgid "%s is in use (%s); close anything using it and try again"
+msgstr "%s используется (%s); закройте всё, что его использует, и повторите попытку"
+
+#: stoke/mountctl.py:128
+#, python-format
+msgid "could not mount %s (%s): %s"
+msgstr "не удалось смонтировать %s (%s): %s"
+
+#: stoke/mountctl.py:128
+msgid "no mount helper"
+msgstr "нет помощника монтирования"
+
+#: stoke/util.py:147
+#, python-format
+msgid "'%s' is not available on this system%s"
+msgstr "«%s» недоступно в этой системе%s"
+
+#: stoke/util.py:180 stoke/wim.py:114
+#, python-format
+msgid "%s failed: %s"
+msgstr "ошибка %s: %s"
+
+#: stoke/util.py:212
+#, python-format
+msgid "short write to %s at %s"
+msgstr "неполная запись в %s по смещению %s"
+
+#: stoke/util.py:226
+#, python-format
+msgid "missing payload file: %s"
+msgstr "отсутствует файл данных: %s"
+
+#: stoke/wim.py:59 stoke/wim.py:75
+#, python-format
+msgid "%s is not a WIM file"
+msgstr "%s не является файлом WIM"
+
+#: stoke/wim.py:63
+#, python-format
+msgid "%s has no XML index"
+msgstr "%s не содержит XML-индекса"
+
+#: stoke/wim.py:131
+#, python-format
+msgid "wimupdate failed: %s"
+msgstr "ошибка wimupdate: %s"
+
+#: stoke/wim.py:170
+#, python-format
+msgid "wimapply failed: %s"
+msgstr "ошибка wimapply: %s"
+
+#: stoke/windows.py:73
+msgid "SYSTEM hive has no Setup key"
+msgstr "куст реестра SYSTEM не содержит раздела Setup"
+
+#: stoke/windows.py:97
+msgid "Applying Windows customization..."
+msgstr "Применение настроек Windows…"
+
+#: stoke/windows.py:171
+msgid "sources/boot.wim not found; cannot add the answer file"
+msgstr "не найден sources/boot.wim; невозможно добавить файл ответов"
+
+#: stoke/windows.py:187
+msgid "Updating boot.wim..."
+msgstr "Обновление boot.wim…"
+
+#: stoke/windows.py:272
+#, python-format
+msgid "%s\\%s not found on the media"
+msgstr "%s\\%s не найден на носителе"
+
+#: stoke/windows.py:289
+msgid ""
+"media has \\minint but no /minint option and no \\i386: unsure how to boot it"
+msgstr "на носителе есть \\minint, но нет параметра /minint и нет \\i386: непонятно, как его загружать"
+
+#: stoke/windows.py:353
+#, python-format
+msgid "%s not found in %s"
+msgstr "%s не найден в %s"
+
+#: stoke/windows.py:385
+msgid "no OS loader entry in the BCD template"
+msgstr "в шаблоне BCD нет записи загрузчика ОС"
+
+#: stoke/windows.py:480
+msgid "Applying Windows image (this takes a while)..."
+msgstr "Применение образа Windows (это может занять некоторое время)…"
+
+#: stoke/windows.py:488
+msgid "applied image has no Windows directory"
+msgstr "в применённом образе нет каталога Windows"
+
+#: stoke/windows.py:500
+msgid "applied image has no Windows\\Boot\\EFI"
+msgstr "в применённом образе нет каталога Windows\\Boot\\EFI"
+
+#: stoke/windows.py:558
+#, python-format
+msgid "could not mount %s (NTFS): neither ntfs3 nor ntfs-3g worked"
+msgstr "не удалось смонтировать %s (NTFS): не сработали ни ntfs3, ни ntfs-3g"
+
+#: stoke/writer.py:50
+msgid ""
+"only fixed-size VHD images can be written; convert dynamic VHD/VHDX with "
+"qemu-img first"
+msgstr "можно записывать только VHD-образы фиксированного размера; сначала преобразуйте динамический VHD/VHDX с помощью qemu-img"
+
+#: stoke/writer.py:90
+#, python-format
+msgid "image is %s but the drive holds only %s"
+msgstr "размер образа %s, а на диске есть только %s"
+
+#: stoke/writer.py:111
+msgid "image is larger than the drive"
+msgstr "образ больше, чем диск"
+
+#: stoke/writer.py:156
+#, python-format
+msgid ""
+"verification failed at offset %s: the drive does not hold what was written"
+msgstr "проверка не удалась по смещению %s: содержимое диска не совпадает с записанным"

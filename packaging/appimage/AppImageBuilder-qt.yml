@@ -1,34 +1,34 @@
-# Fubuki as an AppImage: the KDE window, the engine, Python, GTK 4 and
+# Stoke as an AppImage: the KDE window, the engine, Python, GTK 4 and
 # every tool the engine shells out to, taken from Arch packages and bundled
 # whole (glibc included), so it runs on any x86_64 Linux with a kernel
 # from this decade. No root: with $APPIMAGE set the engine reaches drives
-# through udisks2 (see fubuki/fubuki/backend.py), which every desktop has.
+# through udisks2 (see stoke/stoke/backend.py), which every desktop has.
 #
-#   packaging/appimage/build.sh qt       -> dist/Fubuki-qt-<version>-x86_64.AppImage
+#   packaging/appimage/build.sh qt       -> dist/Stoke-qt-<version>-x86_64.AppImage
 version: 1
 
 script:
   - rm -rf AppDir
-  - install -d AppDir/usr/bin AppDir/usr/lib/fubuki AppDir/usr/share/fubuki
-  - cp -r ../../fubuki/fubuki AppDir/usr/lib/fubuki/
-  - cp -r ../../fubuki/payload/. AppDir/usr/share/fubuki/
-  - install -m755 ../../fubuki/bin/fubuki AppDir/usr/bin/fubuki
-  - cmake -S ../../fubuki-qt/app -B qt-build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  - install -d AppDir/usr/bin AppDir/usr/lib/stoke AppDir/usr/share/stoke
+  - cp -r ../../stoke/stoke AppDir/usr/lib/stoke/
+  - cp -r ../../stoke/payload/. AppDir/usr/share/stoke/
+  - install -m755 ../../stoke/bin/stoke AppDir/usr/bin/stoke
+  - cmake -S ../../stoke-qt/app -B qt-build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   - cmake --build qt-build --parallel
   - DESTDIR=$PWD/AppDir cmake --install qt-build
   - rm -rf qt-build
-  - for po in ../../fubuki/po/*/fubuki.po; do lang=$(basename $(dirname $po)); install -d AppDir/usr/share/locale/$lang/LC_MESSAGES; msgfmt -o AppDir/usr/share/locale/$lang/LC_MESSAGES/fubuki.mo $po; done
-  - install -Dm644 ../../fubuki/icons/fubuki.svg AppDir/usr/share/icons/hicolor/scalable/apps/fubuki.svg
-  - install -Dm644 ../../fubuki-qt/io.github.dresden196.fubuki.desktop AppDir/usr/share/applications/io.github.dresden196.fubuki.desktop
+  - for po in ../../stoke/po/*/stoke.po; do lang=$(basename $(dirname $po)); install -d AppDir/usr/share/locale/$lang/LC_MESSAGES; msgfmt -o AppDir/usr/share/locale/$lang/LC_MESSAGES/stoke.mo $po; done
+  - install -Dm644 ../../stoke/icons/stoke.svg AppDir/usr/share/icons/hicolor/scalable/apps/stoke.svg
+  - install -Dm644 ../../stoke-qt/io.github.dresden196.stoke.desktop AppDir/usr/share/applications/io.github.dresden196.stoke.desktop
 
 AppDir:
   path: ./AppDir
   app_info:
-    id: io.github.dresden196.fubuki
-    name: Fubuki-qt
-    icon: fubuki
-    version: !ENV ${FUBUKI_VERSION}
-    exec: usr/bin/fubuki-qt
+    id: io.github.dresden196.stoke
+    name: Stoke-qt
+    icon: stoke
+    version: !ENV ${STOKE_VERSION}
+    exec: usr/bin/stoke-qt
     exec_args: "$@"
 
   pacman:
@@ -88,12 +88,12 @@ AppDir:
       PYTHONHOME: '${APPDIR}/usr'
       PYTHONPATH: '${APPDIR}/usr/lib/python3.14/site-packages:${APPDIR}/usr/lib/python3.14'
       GI_TYPELIB_PATH: '${APPDIR}/usr/lib/girepository-1.0'
-      FUBUKI_ENGINE: '${APPDIR}/usr/bin/fubuki'
-      FUBUKI_LIB: '${APPDIR}/usr/lib/fubuki'
-      FUBUKI_PAYLOAD: '${APPDIR}/usr/share/fubuki'
-      FUBUKI_SYSLINUX: '${APPDIR}/usr/share/fubuki/syslinux'
-      FUBUKI_GRUB_DIR: '${APPDIR}/usr/lib/grub/i386-pc'
-      FUBUKI_LOCALE_DIR: '${APPDIR}/usr/share/locale'
+      STOKE_ENGINE: '${APPDIR}/usr/bin/stoke'
+      STOKE_LIB: '${APPDIR}/usr/lib/stoke'
+      STOKE_PAYLOAD: '${APPDIR}/usr/share/stoke'
+      STOKE_SYSLINUX: '${APPDIR}/usr/share/stoke/syslinux'
+      STOKE_GRUB_DIR: '${APPDIR}/usr/lib/grub/i386-pc'
+      STOKE_LOCALE_DIR: '${APPDIR}/usr/share/locale'
       QT_PLUGIN_PATH: '${APPDIR}/usr/lib/qt6/plugins'
       QML2_IMPORT_PATH: '${APPDIR}/usr/lib/qt6/qml'
       QML_IMPORT_PATH: '${APPDIR}/usr/lib/qt6/qml'
