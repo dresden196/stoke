@@ -13,6 +13,8 @@ license=('GPL-3.0-or-later')
 depends=('python' 'python-pyudev' 'util-linux' 'dosfstools' 'ntfs-3g' 'exfatprogs' 'e2fsprogs'
          'grub' 'wimlib' 'hivex' 'polkit')
 makedepends=('gettext')
+# The payload (Syslinux modules, boot images) is data, not binaries to strip.
+options=('!strip' '!debug')
 optdepends=('zstd: writing .zst compressed images'
             'python-gobject: the udisks2 backend (writing without root, used by the Flatpak and AppImage)'
             'stoke-qt: the KDE window'
