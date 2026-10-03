@@ -19,7 +19,7 @@ clean_state() {  # 0 when nothing is left behind for $1 (loop name)
     return $rc
 }
 mkdir -p "$OUT"
-IMG="$OUT/native-cancel.img"; rm -f "$IMG"; truncate -s 8G "$IMG"
+IMG="$OUT/native-cancel.img"; rm -f "$IMG"; truncate -s "${STOKE_STICK_SIZE:-16G}" "$IMG"
 LOOP=$(losetup -f --show -P "$IMG"); LN=$(basename "$LOOP")
 trap 'losetup -d "$LOOP" 2>/dev/null; umount /mnt/stoke-tiny 2>/dev/null; rmdir /mnt/stoke-tiny 2>/dev/null' EXIT
 

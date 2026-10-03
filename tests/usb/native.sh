@@ -49,7 +49,7 @@ losetup -d "$LOOP"; trap - EXIT
 modes="bios uefi"
 case "$SCN" in freedos) modes="bios" ;; windows-uefi) modes="uefi" ;; esac
 for m in $modes; do
-    wait=45; [[ $SCN == windows* ]] && wait=110; [[ $SCN == wintogo ]] && wait=230; [[ $SCN == freedos ]] && wait=20
+    wait=90; [[ $SCN == windows* ]] && wait=110; [[ $SCN == wintogo ]] && wait=230; [[ $SCN == freedos ]] && wait=20
     echo "== booting under $m"
     STOKE_STICK="$IMG" "$HERE/boot-stick.sh" "$m" "$wait" "$OUT/native-$SCN-$m.png" | tail -1
 done

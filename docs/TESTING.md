@@ -63,6 +63,12 @@ with `boot-real.sh` over USB passthrough):
 | Windows 11 24H2, NTFS via UEFI:NTFS, GPT | the Flatpak, as a plain user (polkit prompt) | | Setup, also under enforcing Secure Boot |
 | Ubuntu 24.04 Server, 2 GB persistence, MBR/FAT32 | `STOKE_BACKEND=udisks` as root | systemd | systemd |
 
+0.3.0 (the rename to Stoke), run on the SakuraOS build VM with KVM:
+FreeDOS, TinyCore, Ubuntu 24.04.5 with persistence (BIOS and UEFI),
+Windows 11 26H2 on FAT32 with a split install.swm (BIOS and UEFI) and on
+GPT/NTFS via UEFI:NTFS, all to the expected screen; the cancel suite 7 of 7.
+The Windows ISO came from Stoke's own downloader with the 26H2 product ids.
+
 ISO downloader (0.2.3, a Fido port): `stoke download` and both windows'
 Download dialogs fetched the live language list and a Windows 11 25H2 x64
 link from Microsoft, and downloaded the UEFI Shell 2.2 ISO from GitHub,
