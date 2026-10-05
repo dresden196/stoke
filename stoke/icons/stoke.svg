@@ -35,6 +35,10 @@
     <path d="M70 372 C14 300 18 200 74 146 C56 200 82 234 114 228
              C96 160 142 92 206 36 C194 96 238 112 228 156
              C258 112 286 68 294 16 C336 84 326 176 282 234
+             C306 262 304 336 262 380 Z" fill="none" stroke="#2b2e34" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M70 372 C14 300 18 200 74 146 C56 200 82 234 114 228
+             C96 160 142 92 206 36 C194 96 238 112 228 156
+             C258 112 286 68 294 16 C336 84 326 176 282 234
              C306 262 304 336 262 380 Z" fill="url(#g-flame)"/>
     <path d="M96 352 C58 300 62 222 104 186 C92 226 114 250 140 242
              C126 196 158 148 206 110 C196 150 230 164 224 196
@@ -42,10 +46,23 @@
              C270 288 266 332 240 360 Z" fill="url(#g-flame-in)"/>
   </g>
   <g transform="translate(28 28) rotate(45 256 256)">
+    <!-- Dark keylines under every shape, so the mark reads on light
+         backgrounds too (the brand artwork has them). -->
+    <rect x="196" y="10" width="120" height="118" rx="6" fill="none" stroke="#2b2e34" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M180 128 L332 128 L332 344 A76 76 0 0 1 180 344 Z" fill="none" stroke="#2b2e34" stroke-width="35" stroke-linejoin="round"/>
+    <g fill="none" stroke="#2b2e34" stroke-width="23" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M256 392 L256 222"/>
+      <path d="M256 340 L204 288 L204 276"/>
+      <path d="M256 300 L308 248 L308 238"/>
+    </g>
+    <circle cx="256" cy="392" r="27.5" fill="#2b2e34"/>
+    <circle cx="204" cy="258" r="21.5" fill="#2b2e34"/>
+    <rect x="288.5" y="202.5" width="39" height="39" fill="#2b2e34"/>
+    <path d="M256 180 L226 232 L286 232 Z" fill="#2b2e34" stroke="#2b2e34" stroke-width="7" stroke-linejoin="round"/>
     <!-- Plug: a filled block with two dark contact slots. -->
     <rect x="196" y="10" width="120" height="118" rx="6" fill="url(#g-plug)"/>
-    <rect x="222" y="36" width="28" height="28" fill="#22252a"/>
-    <rect x="262" y="36" width="28" height="28" fill="#22252a"/>
+    <rect x="222" y="36" width="28" height="28" fill="#2b2e34"/>
+    <rect x="262" y="36" width="28" height="28" fill="#2b2e34"/>
     <!-- Body: an outline with a round bottom. -->
     <path d="M180 128 L332 128 L332 344 A76 76 0 0 1 180 344 Z"
           fill="none" stroke="url(#g-body)" stroke-width="28" stroke-linejoin="round"/>

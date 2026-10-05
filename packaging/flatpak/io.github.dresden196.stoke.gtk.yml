@@ -140,6 +140,7 @@ modules:
       # only the icon name changes, from the engine's plain "stoke" to the
       # app id Flatpak exports.
       - install -Dm644 stoke/icons/stoke.svg /app/share/icons/hicolor/scalable/apps/io.github.dresden196.stoke.gtk.svg
+      - for png in stoke/icons/hicolor/*/apps/stoke.png; do size=$(basename "$(dirname "$(dirname "$png")")"); install -Dm644 "$png" /app/share/icons/hicolor/$size/apps/io.github.dresden196.stoke.gtk.png; done
       - install -d /app/share/applications && sed -e 's/^Icon=stoke$/Icon=io.github.dresden196.stoke.gtk/' stoke-gtk/io.github.dresden196.stoke.gtk.desktop > /app/share/applications/io.github.dresden196.stoke.gtk.desktop
       - install -Dm644 stoke-gtk/io.github.dresden196.stoke.gtk.metainfo.xml /app/share/metainfo/io.github.dresden196.stoke.gtk.metainfo.xml
     sources:

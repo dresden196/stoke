@@ -17,6 +17,7 @@ script:
   - install -m755 ../../stoke-gtk/bin/stoke-gtk AppDir/usr/bin/stoke-gtk
   - for po in ../../stoke/po/*/stoke.po; do lang=$(basename $(dirname $po)); install -d AppDir/usr/share/locale/$lang/LC_MESSAGES; msgfmt -o AppDir/usr/share/locale/$lang/LC_MESSAGES/stoke.mo $po; done
   - install -Dm644 ../../stoke/icons/stoke.svg AppDir/usr/share/icons/hicolor/scalable/apps/stoke.svg
+  - cp -r ../../stoke/icons/hicolor AppDir/usr/share/icons/
   - install -Dm644 ../../stoke-gtk/io.github.dresden196.stoke.gtk.desktop AppDir/usr/share/applications/io.github.dresden196.stoke.gtk.desktop
 
 AppDir:

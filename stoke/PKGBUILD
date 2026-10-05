@@ -49,6 +49,10 @@ package() {
     # the same hicolor path would conflict.
     install -Dm644 "$startdir/icons/stoke.svg" \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/stoke.svg"
+    for png in "$startdir"/icons/hicolor/*/apps/stoke.png; do
+        size=$(basename "$(dirname "$(dirname "$png")")")
+        install -Dm644 "$png" "$pkgdir/usr/share/icons/hicolor/$size/apps/stoke.png"
+    done
     install -Dm644 "$startdir/PROTOCOL.md" "$pkgdir/usr/share/doc/stoke/PROTOCOL.md"
 
     # Status phrases and error messages (stoke/i18n.py); the log stays English.

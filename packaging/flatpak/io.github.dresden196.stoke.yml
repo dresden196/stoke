@@ -160,6 +160,7 @@ modules:
       - cd "$FLATPAK_BUILDER_BUILDDIR" && install -Dm755 stoke/bin/stoke /app/bin/stoke
       - cd "$FLATPAK_BUILDER_BUILDDIR" && for po in stoke/po/*/stoke.po; do lang=$(basename $(dirname $po)); install -d /app/share/locale/$lang/LC_MESSAGES; msgfmt -o /app/share/locale/$lang/LC_MESSAGES/stoke.mo $po; done
       - cd "$FLATPAK_BUILDER_BUILDDIR" && install -Dm644 stoke/icons/stoke.svg /app/share/icons/hicolor/scalable/apps/io.github.dresden196.stoke.svg
+      - cd "$FLATPAK_BUILDER_BUILDDIR" && for png in stoke/icons/hicolor/*/apps/stoke.png; do size=$(basename "$(dirname "$(dirname "$png")")"); install -Dm644 "$png" /app/share/icons/hicolor/$size/apps/io.github.dresden196.stoke.png; done
       - cd "$FLATPAK_BUILDER_BUILDDIR" && install -d /app/share/applications && sed -e 's/^Icon=stoke$/Icon=io.github.dresden196.stoke/' stoke-qt/io.github.dresden196.stoke.desktop > /app/share/applications/io.github.dresden196.stoke.desktop
       # The tree has no metainfo for the KDE window yet; the GNOME one with
       # the ids and the one sentence that names the toolkit swapped.
